@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>使用vue.js2.5+cube-ui仿饿了么APP-项目准备工作 | 卡恩思欧的博客 | 不爱撸猫的摄影师不是好程序猿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#fcddb7">
+    
+    
+    <meta name="keywords" content="vue,cube-ui">
+    <meta name="description" content="vue 安装 安装vue-cli 12npm install -g @vue/clivue --version  创建项目 1vue create 项目名  选择相应配置  测试项目是否能够成功运行 12cd 项目名npm run serve  访问 http://localhost:8080/   cube-ui安装 github地址 作为 vue-cli 插件使用  1vue add cube">
+<meta name="keywords" content="vue,cube-ui">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用vue.js2.5+cube-ui仿饿了么APP-项目准备工作">
+<meta property="og:url" content="https://wsrdadian.github.io/2019/01/15/使用vue-js2-5-cube-ui仿饿了么APP-项目准备工作/index.html">
+<meta property="og:site_name" content="卡恩思欧的博客">
+<meta property="og:description" content="vue 安装 安装vue-cli 12npm install -g @vue/clivue --version  创建项目 1vue create 项目名  选择相应配置  测试项目是否能够成功运行 12cd 项目名npm run serve  访问 http://localhost:8080/   cube-ui安装 github地址 作为 vue-cli 插件使用  1vue add cube">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-01-15T11:11:23.468Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用vue.js2.5+cube-ui仿饿了么APP-项目准备工作">
+<meta name="twitter:description" content="vue 安装 安装vue-cli 12npm install -g @vue/clivue --version  创建项目 1vue create 项目名  选择相应配置  测试项目是否能够成功运行 12cd 项目名npm run serve  访问 http://localhost:8080/   cube-ui安装 github地址 作为 vue-cli 插件使用  1vue add cube">
+    
+        <link rel="alternate" type="application/atom+xml" title="卡恩思欧的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">WSR</h5>
+          <a href="mailto:wangshrl@163.com" title="wangshrl@163.com" class="mail">wangshrl@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                存档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/wsrdadian" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/Wangshrl" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">使用vue.js2.5+cube-ui仿饿了么APP-项目准备工作</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">使用vue.js2.5+cube-ui仿饿了么APP-项目准备工作</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-15T08:31:21.000Z" itemprop="datePublished" class="page-time">
+  2019-01-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端学习/">前端学习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#vue-安装"><span class="post-toc-number">1.</span> <span class="post-toc-text">vue 安装</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#cube-ui安装-github地址"><span class="post-toc-number">2.</span> <span class="post-toc-text">cube-ui安装 github地址</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#api接口mock"><span class="post-toc-number">3.</span> <span class="post-toc-text">api接口mock</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-使用vue-js2-5-cube-ui仿饿了么APP-项目准备工作" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">使用vue.js2.5+cube-ui仿饿了么APP-项目准备工作</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-15 16:31:21" datetime="2019-01-15T08:31:21.000Z" itemprop="datePublished">2019-01-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端学习/">前端学习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="vue-安装"><a href="#vue-安装" class="headerlink" title="vue 安装"></a><a href="https://cli.vuejs.org/zh/guide/installation.html" target="_blank" rel="noopener">vue</a> 安装</h1><ol>
+<li><p>安装vue-cli</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue/cli</span><br><span class="line">vue --version</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue create 项目名</span><br></pre></td></tr></table></figure>
+<p> <em>选择相应配置</em></p>
+</li>
+<li><p>测试项目是否能够成功运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd 项目名</span><br><span class="line">npm run serve</span><br></pre></td></tr></table></figure>
+<p> <em>访问 <a href="http://localhost:8080/" target="_blank" rel="noopener">http://localhost:8080/</a></em></p>
+</li>
+</ol>
+<h1 id="cube-ui安装-github地址"><a href="#cube-ui安装-github地址" class="headerlink" title="cube-ui安装 github地址"></a><a href="https://didi.github.io/cube-ui/#/zh-CN" target="_blank" rel="noopener">cube-ui</a>安装 <em><a href="https://github.com/didi/cube-ui" target="_blank" rel="noopener">github地址</a></em></h1><ul>
+<li><p>作为 <a href="https://github.com/cube-ui/vue-cli-plugin-cube-ui" target="_blank" rel="noopener">vue-cli 插件</a>使用 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue add cube-ui</span><br></pre></td></tr></table></figure>
+<p>  <em>进行相关配置</em></p>
+<blockquote>
+<p>请仔细阅读 vue-cli 和 cube-ui 文档</p>
+</blockquote>
+</li>
+</ul>
+<h1 id="api接口mock"><a href="#api接口mock" class="headerlink" title="api接口mock"></a>api接口mock</h1><ol>
+<li>根目录下添加 <em>./data.json</em><br>在<a href="https://github.com/ustbhuangyi/vue-sell" target="_blank" rel="noopener">项目源码</a>中下载文件，<a href="https://www.cnblogs.com/zhaoqingqing/p/5534827.html" target="_blank" rel="noopener">下载方法</a></li>
+<li><p>在 <em>vue.config.js</em> 中添加代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const appData = require(&apos;./data.json&apos;)</span><br><span class="line">const seller = appData.seller</span><br><span class="line">const goods = appData.goods</span><br><span class="line">const ratings = appData.ratings</span><br></pre></td></tr></table></figure>
+<p> <em>pluginOptions后添加</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">devServer: &#123;</span><br><span class="line">    before(app) &#123;</span><br><span class="line">      app.get(&apos;/api/seller&apos;,function(req,res) &#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">          errno: 0,</span><br><span class="line">          data: seller</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">      app.get(&apos;/api/goods&apos;,function(req,res) &#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">          errno: 0,</span><br><span class="line">          data: goods</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">      app.get(&apos;/api/ratings&apos;,function(req,res) &#123;</span><br><span class="line">        res.json(&#123;</span><br><span class="line">          errno: 0,</span><br><span class="line">          data: ratings</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p> <em>运行程序并访问 <a href="http://localhost:8080/api/seller" target="_blank" rel="noopener">http://localhost:8080/api/seller</a></em> 如果显示json内容则正确</p>
+</li>
+<li>为谷歌浏览器安装 <a href="https://www.cnblogs.com/whycxb/p/7126116.html" target="_blank" rel="noopener">jsonview</a> </li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-01-15T11:11:23.468Z" itemprop="dateUpdated">2019-01-15 19:11:23</time>
+</span><br>
+
+
+        
+        如果博客内容对您有用请适当投喂哦~
+        
+    </div>
+    
+    <footer>
+        <a href="https://wsrdadian.github.io">
+            <img src="/img/avatar.jpg" alt="WSR">
+            WSR
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/cube-ui/">cube-ui</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/01/15/使用vue-js2-5-cube-ui仿饿了么APP-项目准备工作/&title=《使用vue.js2.5+cube-ui仿饿了么APP-项目准备工作》 — 卡恩思欧的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/01/15/使用vue-js2-5-cube-ui仿饿了么APP-项目准备工作/&title=《使用vue.js2.5+cube-ui仿饿了么APP-项目准备工作》 — 卡恩思欧的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/01/15/使用vue-js2-5-cube-ui仿饿了么APP-项目准备工作/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用vue.js2.5+cube-ui仿饿了么APP-项目准备工作》 — 卡恩思欧的博客&url=https://wsrdadian.github.io/2019/01/15/使用vue-js2-5-cube-ui仿饿了么APP-项目准备工作/&via=https://wsrdadian.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/01/15/使用vue-js2-5-cube-ui仿饿了么APP-项目准备工作/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/01/14/修改配色为小埋色以及图标制作/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">修改配色为小埋色以及图标制作</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢投喂~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>WSR &copy; 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/01/15/使用vue-js2-5-cube-ui仿饿了么APP-项目准备工作/&title=《使用vue.js2.5+cube-ui仿饿了么APP-项目准备工作》 — 卡恩思欧的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/01/15/使用vue-js2-5-cube-ui仿饿了么APP-项目准备工作/&title=《使用vue.js2.5+cube-ui仿饿了么APP-项目准备工作》 — 卡恩思欧的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/01/15/使用vue-js2-5-cube-ui仿饿了么APP-项目准备工作/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《使用vue.js2.5+cube-ui仿饿了么APP-项目准备工作》 — 卡恩思欧的博客&url=https://wsrdadian.github.io/2019/01/15/使用vue-js2-5-cube-ui仿饿了么APP-项目准备工作/&via=https://wsrdadian.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/01/15/使用vue-js2-5-cube-ui仿饿了么APP-项目准备工作/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADKElEQVR42u3aUW4iQQwEUO5/afYAGyZVbZAY581XFKBnXiPFcbkfj/h6Xl7/vzNZLXn1+l75HQ8vbGxs7JuwE9IZNVnherVXK+R3ebll2NjY2OvYyUNPAMmjX692/VXlFmxsbGzs6/KWP+InNhEbGxsbO2Eni+afTRjzsoeNjY39F9hJqHTWNrTlqi2WH8/SsLGxsb+enT/u9//8kfk2NjY29hezn+XVrtPGQ/kIYXJhY2Njb2LnBSDHJJvVtgfzRggbGxt7Kzs/cHn2uO1ooT1qeXhfbGxs7EXs9xawyQD47Nhl26JgY2Nj72PPw50EmRy7SQ7ctMc3X76KjY2NvY6dtxx5VbwGTFqU9i6PfBexsbGxb8hu//Wf3L4NsNrBQB14YWNjY69j57ecH6aZDA8mReuHaAkbGxv75uyzQCc/uDMJmPLvLSlpL7M0bGxs7BXsdw1c84cY1du4LXn5fmxsbOxF7LzNaEtaW2Dy8jMpe/X0GBsbG/tW7HnBOGsP2hFvGy29XA0bGxt7Ebsd0M6peUSVb3ESZtVJFTY2Nvat2JOBa445GyrnK7Qbio2NjX13dn6DehePIv6ztqT9FDY2NvYmdhvEn2Xs7aA3D57aEUJUxrCxsbFvyG7j9aQxSIKnhDoJp/LnxMbGxt7BnheMtm1otyMfVyRDC2xsbOxN7LPjNe0GPcqrHS3n62BjY2NvYufIs+C+/X27BWf3wsbGxt7Hbo/gTCKnfLXJgOEXIzY2NvY6dn6AJi9+Z4B8nDz6PTY2NvYidvFHvyw/SbE5K5/zQQI2Njb2PnY7pm2P0bT4fADQDo9/GBJgY2Njr2OfBUxt6Wo3tI2QoifHxsbGXsc+i/7PwqCz0Gqy8i9TbmxsbOzbsp/llQRPeavw3qCqiMCwsbGxF7HbAvDpgcG8OcmHB9jY2Nib2EnRygvP/LBOHmDl78fGxsb+C+w21pm0Ctcl6gw/Sq2wsbGx/xh7ckAnbz/aslrHSdjY2NjY5avzJmRerUatCDY2NvbXs9sjmG2ENDm4Ofl6Xq6AjY2NvYj9rgQm+exk+/KtPGxOsLGxse/H/gcJ6WejHbw0VgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '咦!回来啦!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
