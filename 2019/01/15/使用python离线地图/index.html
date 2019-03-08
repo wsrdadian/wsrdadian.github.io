@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>地图离线-python+PIL | 卡恩思欧的博客 | 不爱撸猫的摄影师不是好程序猿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#fcddb7">
+    
+    
+    <meta name="keywords" content="python,PIL">
+    <meta name="description" content="使用python离线地图 环境 python3.7 内置pip，使用比较方便 PIL只支持到 python2.7,在3.7之后，使用 pillow 效果相同1pip install Pillow   代码 github链接 按照md文件进行自定义操作  修改了一些代码 gmap_utils.py 文件中ak值换成自己申请的 download_tiles.py 文件 1234query = &amp;quo">
+<meta name="keywords" content="python,PIL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="地图离线-python+PIL">
+<meta property="og:url" content="https://wsrdadian.github.io/2019/01/15/使用python离线地图/index.html">
+<meta property="og:site_name" content="卡恩思欧的博客">
+<meta property="og:description" content="使用python离线地图 环境 python3.7 内置pip，使用比较方便 PIL只支持到 python2.7,在3.7之后，使用 pillow 效果相同1pip install Pillow   代码 github链接 按照md文件进行自定义操作  修改了一些代码 gmap_utils.py 文件中ak值换成自己申请的 download_tiles.py 文件 1234query = &amp;quo">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-08T01:57:50.988Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="地图离线-python+PIL">
+<meta name="twitter:description" content="使用python离线地图 环境 python3.7 内置pip，使用比较方便 PIL只支持到 python2.7,在3.7之后，使用 pillow 效果相同1pip install Pillow   代码 github链接 按照md文件进行自定义操作  修改了一些代码 gmap_utils.py 文件中ak值换成自己申请的 download_tiles.py 文件 1234query = &amp;quo">
+    
+        <link rel="alternate" type="application/atom+xml" title="卡恩思欧的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">WSR</h5>
+          <a href="mailto:wangshrl@163.com" title="wangshrl@163.com" class="mail">wangshrl@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                存档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/wsrdadian" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/Wangshrl" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">地图离线-python+PIL</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">地图离线-python+PIL</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-01-15T13:25:54.000Z" itemprop="datePublished" class="page-time">
+  2019-01-15
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/python/">python</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#环境"><span class="post-toc-number">1.</span> <span class="post-toc-text">环境</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#代码"><span class="post-toc-number">2.</span> <span class="post-toc-text">代码</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#修改了一些代码"><span class="post-toc-number">3.</span> <span class="post-toc-text">修改了一些代码</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#仍然存在的一些问题"><span class="post-toc-number">4.</span> <span class="post-toc-text">仍然存在的一些问题</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-使用python离线地图" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">地图离线-python+PIL</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-01-15 21:25:54" datetime="2019-01-15T13:25:54.000Z" itemprop="datePublished">2019-01-15</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/python/">python</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>使用python离线地图</p>
+<h1 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h1><ol>
+<li><a href="https://www.python.org/downloads/" target="_blank" rel="noopener">python3.7</a> 内置pip，使用比较方便</li>
+<li>PIL只支持到 python2.7,在3.7之后，使用 <a href="https://pypi.org/project/Pillow/" target="_blank" rel="noopener">pillow</a> 效果相同<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install Pillow</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><ul>
+<li><a href="https://github.com/muxfe/BaiduMap_tiles" target="_blank" rel="noopener">github链接</a></li>
+<li>按照md文件进行自定义操作</li>
+</ul>
+<h1 id="修改了一些代码"><a href="#修改了一些代码" class="headerlink" title="修改了一些代码"></a>修改了一些代码</h1><ol>
+<li>gmap_utils.py 文件中ak值换成自己申请的</li>
+<li><p>download_tiles.py 文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">query = &quot;qt=tile&amp;x=%d&amp;y=%d&amp;z=%d&amp;styles=%s%s&amp;udt=20190307&quot; % (x, y, zoom, styles, scaler)</span><br><span class="line">url = &quot;http://online0.map.bdimg.com/onlinelabel/?&quot; + query</span><br><span class="line">path = &quot;%d_%d_%d_r&quot; % (zoom ,x, y)</span><br><span class="line">filename = path + &quot;.png&quot;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>merge_tiles.py 文件</p>
+</li>
+</ol>
+<ul>
+<li><p>由于原代码中文件路径和文件名与该文件中的要求不符，所以修改filename使其符合要求</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">filename = &quot;tile/%d_%d_%d_%s.%s&quot; % (zoom, x, y, TYPE, ext)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成的图片加层级标志</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">result.save(&quot;map_%d_%s.%s&quot; % (zoom, TYPE, ext))</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="仍然存在的一些问题"><a href="#仍然存在的一些问题" class="headerlink" title="仍然存在的一些问题"></a>仍然存在的一些问题</h1><ol>
+<li>图片过多时，出现10060错误，目前只是重新获取，应该需要对 REQUEST 进行深入研究</li>
+<li>级别过高时，合并图片出现内存溢出错误，初步判断为 python 内存设置问题，需继续研究</li>
+<li>若合并时内存问题不能解决，高层级可以先获取省级，再逐个将省级合并为国家级，此时应写出新的 python 的图像合成文件</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-03-08T01:57:50.988Z" itemprop="dateUpdated">2019-03-08 09:57:50</time>
+</span><br>
+
+
+        
+        如果博客内容对您有用请适当投喂哦~
+        
+    </div>
+    
+    <footer>
+        <a href="https://wsrdadian.github.io">
+            <img src="/img/avatar.jpg" alt="WSR">
+            WSR
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PIL/">PIL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/01/15/使用python离线地图/&title=《地图离线-python+PIL》 — 卡恩思欧的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/01/15/使用python离线地图/&title=《地图离线-python+PIL》 — 卡恩思欧的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/01/15/使用python离线地图/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《地图离线-python+PIL》 — 卡恩思欧的博客&url=https://wsrdadian.github.io/2019/01/15/使用python离线地图/&via=https://wsrdadian.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/01/15/使用python离线地图/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/01/15/使用vue-js2-5-cube-ui仿饿了么APP-项目准备工作/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">使用vue.js2.5+cube-ui仿饿了么APP-项目准备工作</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢投喂~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>WSR &copy; 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/01/15/使用python离线地图/&title=《地图离线-python+PIL》 — 卡恩思欧的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/01/15/使用python离线地图/&title=《地图离线-python+PIL》 — 卡恩思欧的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/01/15/使用python离线地图/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《地图离线-python+PIL》 — 卡恩思欧的博客&url=https://wsrdadian.github.io/2019/01/15/使用python离线地图/&via=https://wsrdadian.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/01/15/使用python离线地图/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3a0WrDQAwEwPz/T6evhWJnJZ1MCuOnkKS25wrWZaXXKz7et8fv79yfIX8n+f6xAw8PD++RW//76dXl8yW4P9vVFa/uGQ8PD2+bd+q2kvNcnXm+THh4eHjfyctvN3no3189uQc8PDy8b+bdb3arBQAPDw/vv/OSMOIe1isJvYVYyVrw8PDwYl7eRfqe1yv9PTw8PLxxVz0pEr1Athpb9A48PDy8Dd5kdCAPLPKFmMQflwuHh4eHd5RXHa7qLUdCrY5YRSUKDw8Pb4GXR66TUYDerVcbXYWoAg8PD+8Qr7eZTh7W+aO//Gsg/5fg4eHhHeLlW+G8MdaLIXrNtkKAi4eHh3d0KmlygTy2qJaEPDj+8Ld4eHh4y7xq/Hr/mJ4/6KslCg8PD+8ZXnXDmrTzC1veoIRMihMeHh7eWd784Z6PmeahxqkeFh4eHt4Gb1IS8hGo+eDUaOgKDw8P7yhvXgB6ja7JMuUBMR4eHt4GrxoEJI2ofJNdLR7NmTI8PDy8R3jzC+SLksSyveEDPDw8vA1eDit00uKgdoIppNR4eHh4R3mTjWw+OjAZDqgu34e6h4eHh3eIN2nSJ1vnSfu/OrZ1rFTg4eHhXfCSULUa1E7OkDfbIjweHh7eAq/Xvso33NUCkJSfcnSCh4eHt8bLh5wKvbU4rp00uj4EEHh4eHhrvHyjnH+aYHrvF9pyeHh4eGu8pH11tpUVNauKQwl4eHh427x38Ui2uQlju5xcNsDw8PDwxrzeSFN19OpU2+xAMIGHh4d3iJcXg3lomz/uq1Fyc2ONh4eHN+D1NriTgYNkUaphBB4eHt538qrjVlXqpP1W7u/h4eHhPcLLl6C3mZ6Hy3h4eHjP8CaRwdlSkce1USHBw8PDW+BNfvBXxwvysYDeEAMeHh7eMu8Hxwo8GEjwWyAAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '咦!回来啦!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
