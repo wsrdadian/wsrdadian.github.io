@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="卡恩思欧的博客">
 <meta property="og:description" content="使用GULP构建工具对Metronic进行管理 部署gulp 打开终端并进入到 Metronic 的 theme 根目录，运行以下代码1$ npm install //安装程序的依赖包    发现 npm install 报 node-sass 错误原因: npm install 的时候所下载的 node-sass 文件夹是空的在 C:\Users\admin\AppData\Roaming\np">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-12T03:18:52.066Z">
+<meta property="og:updated_time" content="2019-03-12T09:02:22.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Metronic学习之路(一)">
 <meta name="twitter:description" content="使用GULP构建工具对Metronic进行管理 部署gulp 打开终端并进入到 Metronic 的 theme 根目录，运行以下代码1$ npm install //安装程序的依赖包    发现 npm install 报 node-sass 错误原因: npm install 的时候所下载的 node-sass 文件夹是空的在 C:\Users\admin\AppData\Roaming\np">
@@ -167,7 +167,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#部署gulp"><span class="post-toc-number">1.</span> <span class="post-toc-text">部署gulp</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gulp-任务运用"><span class="post-toc-number">2.</span> <span class="post-toc-text">gulp 任务运用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SASS-编译"><span class="post-toc-number">3.</span> <span class="post-toc-text">SASS 编译</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#RTL-SASS-编译"><span class="post-toc-number">4.</span> <span class="post-toc-text">RTL SASS 编译</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CSS-和-JS-文件的压缩"><span class="post-toc-number">5.</span> <span class="post-toc-text">CSS 和 JS 文件的压缩</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#HTML-格式化"><span class="post-toc-number">6.</span> <span class="post-toc-text">HTML 格式化</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#部署gulp"><span class="post-toc-number">1.</span> <span class="post-toc-text">部署gulp</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gulp-任务运用"><span class="post-toc-number">2.</span> <span class="post-toc-text">gulp 任务运用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#gulp-localhost"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">gulp localhost</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#gulp-localhost-live"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">gulp localhost-live</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SASS-编译"><span class="post-toc-number">3.</span> <span class="post-toc-text">SASS 编译</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#gulp-sass"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">gulp sass</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#gulp-sass-watch"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">gulp sass:watch</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#RTL-SASS-编译"><span class="post-toc-number">4.</span> <span class="post-toc-text">RTL SASS 编译</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CSS-和-JS-文件的压缩"><span class="post-toc-number">5.</span> <span class="post-toc-text">CSS 和 JS 文件的压缩</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#HTML-格式化"><span class="post-toc-number">6.</span> <span class="post-toc-text">HTML 格式化</span></a></li></ol>
         </nav>
     </aside>
 
@@ -223,10 +223,7 @@
 <ol start="4">
 <li>如果有其他问题，请参考<br><a href="https://segmentfault.com/a/1190000006804354?_ea=1135407" target="_blank" rel="noopener">初探前端自动化神器（Gulp）</a><br><a href="https://www.cnblogs.com/telwanggs/p/7065414.html" target="_blank" rel="noopener">Bootstrap 之 Metronic 模板的学习之路 - （7）GULP 前端自动化工具</a></li>
 </ol>
-<h1 id="gulp-任务运用"><a href="#gulp-任务运用" class="headerlink" title="gulp 任务运用"></a>gulp 任务运用</h1><ol>
-<li>gulp localhost</li>
-</ol>
-<ul>
+<h1 id="gulp-任务运用"><a href="#gulp-任务运用" class="headerlink" title="gulp 任务运用"></a>gulp 任务运用</h1><h2 id="gulp-localhost"><a href="#gulp-localhost" class="headerlink" title="gulp localhost"></a>gulp localhost</h2><ul>
 <li><p>安装 <em>Connect</em> 插件</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install--save-dev gulp-connect</span><br></pre></td></tr></table></figure>
 </li>
@@ -238,20 +235,57 @@
 <li><p>只要在终端/命令行中执行 gulp, 就可以启动 web 服务器，然后可以在浏览器中打开 <em>localhost:8080</em></p>
 </li>
 </ul>
-<ol start="2">
-<li>gulp localhost-live</li>
-</ol>
-<ul>
+<h2 id="gulp-localhost-live"><a href="#gulp-localhost-live" class="headerlink" title="gulp localhost-live"></a>gulp localhost-live</h2><ul>
 <li>给 <em>connect.server()</em> 方法传入一个参数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;localhost-live&apos;, function() &#123;</span><br><span class="line">  connect.server(&#123;</span><br><span class="line">    livereload: true</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h1 id="SASS-编译"><a href="#SASS-编译" class="headerlink" title="SASS 编译"></a>SASS 编译</h1><ul>
-<li>打开终端进入到 <em>gulpfile.js</em> 所在的 <em>theme</em> 目录。输入 <em>gulp sass</em> 命令执行手工构建任务。<br>输入 <em>gulp sass:watch</em> 运行 scss 实时监控 css 文件的编译，编译后的 css 文件会输出到 <em>assets</em> 目录。</li>
-<li><p>发现报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Error: watching ./sass/**/*.scss: watch task has to be a function (optionally generated by using gulp.parallel or gulp.series)</span><br><span class="line">    at Gulp.watch (F:\web\metronic_v4.5.2\theme\node_modules\gulp\index.js:28:11)</span><br><span class="line">    at F:\web\metronic_v4.5.2\theme\gulpfile.js:59:10</span><br><span class="line">    at taskWrapper (F:\web\metronic_v4.5.2\theme\node_modules\undertaker\lib\set-task.js:13:15)</span><br><span class="line">    at bound (domain.js:395:14)</span><br><span class="line">    at runBound (domain.js:408:12)</span><br><span class="line">    at asyncRunner (F:\web\metronic_v4.5.2\theme\node_modules\async-done\index.js:55:18)</span><br><span class="line">    at process._tickCallback (internal/process/next_tick.js:61:11)</span><br></pre></td></tr></table></figure>
+<h1 id="SASS-编译"><a href="#SASS-编译" class="headerlink" title="SASS 编译"></a>SASS 编译</h1><h2 id="gulp-sass"><a href="#gulp-sass" class="headerlink" title="gulp sass"></a>gulp sass</h2><p>打开终端进入到 <em>gulpfile.js</em> 所在的 <em>theme</em> 目录。输入 <em>gulp sass</em> 命令执行手工构建任务。</p>
+<ol>
+<li>发现报错 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">It&apos;s not clear which file to import for &apos;@import &quot;file&quot;&apos;.</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>分析：<br>这个是由于require引入的包的版本问题导致的。在不同的版本里，接口参数发生了变化。在gulp4.0之后已经只能接受watch第二个参数必须为函数。<br>解决办法：修改gulpfile.js</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;sass:watch&apos;, function () &#123;</span><br><span class="line">	gulp.watch(&apos;./sass/**/*.scss&apos;,gulp.series(&apos;sass&apos;));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</ol>
+<ul>
+<li>由于 sass <em>_filename.scss</em> 不允许出现 同名无下划线 <em>filename.scss</em> ,写文件全称试试</li>
+<li>解决：<em>components-md.scss</em> 中<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@import &apos;_components.scss&apos;;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="2">
+<li>继续执行 <em>gulp sass</em>,发现报错<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Message:</span><br><span class="line">    sass\global\_components.scss</span><br><span class="line">Error: Import directives may not be used within control directives or mixins.</span><br><span class="line">        on line 7 of sass/global/_components.scss</span><br><span class="line">        from line 8 of sass/global/components-md.scss</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><p>解决：<em>_components.scss</em> 中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// General CSS Reset</span><br><span class="line">@if $theme-style == &quot;square&quot; &#123; </span><br><span class="line">@import &apos;components/_reset-rounds&apos;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>去掉 <em>@if</em> 判断</p>
+</li>
+</ul>
+<ol start="3">
+<li>继续执行 <em>gulp sass</em> ,出现新的报错<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Error: Undefined variable: &quot;$general-border-radius&quot;.</span><br><span class="line">       on line 134 of sass/apps/inbox.scss</span><br><span class="line">       border-radius: $general-border-radius;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li><p>解决：<em>global/_variables.scss</em> 中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@if $theme-type == &quot;material-design&quot; &#123;</span><br><span class="line">$general-border-radius:       2px !default;</span><br><span class="line">&#125; @else &#123;</span><br><span class="line">$general-border-radius:       4px !default;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在 <em>@if</em> 前添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$general-border-radius:       2px !default;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="4">
+<li>继续执行 <em>gulp sass</em> ,出现新的报错<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The following tasks did not complete: testGulp </span><br><span class="line">Did you forget to signal async completion?</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>官方方法<br>在不使用文件流的情况下，向task的函数里传入一个名叫done的回调函数，以结束task。<a href="https://blog.csdn.net/weixin_40817115/article/details/81079507" target="_blank" rel="noopener">参考</a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;testGulp&apos;, done =&gt; &#123;</span><br><span class="line">  console.log(&apos;Hello World!&apos;);</span><br><span class="line">  done();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="gulp-sass-watch"><a href="#gulp-sass-watch" class="headerlink" title="gulp sass:watch"></a>gulp sass:watch</h2><ol>
+<li>输入 <em>gulp sass:watch</em> 运行 scss 实时监控 css 文件的编译，编译后的 css 文件会输出到 <em>assets</em> 目录。<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Error: watching ./sass/**/*.scss: watch task has to be a function (optionally generated by using gulp.parallel or gulp.series)</span><br><span class="line">    at Gulp.watch (F:\web\metronic_v4.5.2\theme\node_modules\gulp\index.js:28:11)</span><br><span class="line">    at F:\web\metronic_v4.5.2\theme\gulpfile.js:59:10</span><br><span class="line">    at taskWrapper (F:\web\metronic_v4.5.2\theme\node_modules\undertaker\lib\set-task.js:13:15)</span><br><span class="line">    at bound (domain.js:395:14)</span><br><span class="line">    at runBound (domain.js:408:12)</span><br><span class="line">    at asyncRunner (F:\web\metronic_v4.5.2\theme\node_modules\async-done\index.js:55:18)</span><br><span class="line">    at process._tickCallback (internal/process/next_tick.js:61:11)</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>分析：<br>这个是由于require引入的包的版本问题导致的。在不同的版本里，接口参数发生了变化。在gulp4.0之后已经只能接受watch第二个参数必须为函数。<br>解决办法：修改gulpfile.js<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;sass:watch&apos;, function () &#123;</span><br><span class="line">	gulp.watch(&apos;./sass/**/*.scss&apos;,gulp.series(&apos;sass&apos;));</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h1 id="RTL-SASS-编译"><a href="#RTL-SASS-编译" class="headerlink" title="RTL SASS 编译"></a>RTL SASS 编译</h1><ul>
@@ -272,7 +306,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-03-12T03:18:52.066Z" itemprop="dateUpdated">2019-03-12 11:18:52</time>
+    最后更新时间：<time datetime="2019-03-12T09:02:22.680Z" itemprop="dateUpdated">2019-03-12 17:02:22</time>
 </span><br>
 
 
@@ -353,7 +387,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/03/12/Metronic学习之路-二/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Metronic学习之路(二)</h4>
+      </a>
+    </div>
   
 
   
