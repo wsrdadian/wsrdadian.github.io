@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Metronic学习之路(一) | 卡恩思欧的博客 | 不爱撸猫的摄影师不是好程序猿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#fcddb7">
+    
+    
+    <meta name="keywords" content="Metronic">
+    <meta name="description" content="使用GULP构建工具对Metronic进行管理 部署gulp 打开终端并进入到 Metronic 的 theme 根目录，运行以下代码1$ npm install //安装程序的依赖包    发现 npm install 报 node-sass 错误原因: npm install 的时候所下载的 node-sass 文件夹是空的在 C:\Users\admin\AppData\Roaming\np">
+<meta name="keywords" content="Metronic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Metronic学习之路(一)">
+<meta property="og:url" content="https://wsrdadian.github.io/2019/03/12/Metronic学习之路-一/index.html">
+<meta property="og:site_name" content="卡恩思欧的博客">
+<meta property="og:description" content="使用GULP构建工具对Metronic进行管理 部署gulp 打开终端并进入到 Metronic 的 theme 根目录，运行以下代码1$ npm install //安装程序的依赖包    发现 npm install 报 node-sass 错误原因: npm install 的时候所下载的 node-sass 文件夹是空的在 C:\Users\admin\AppData\Roaming\np">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-12T02:50:40.989Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Metronic学习之路(一)">
+<meta name="twitter:description" content="使用GULP构建工具对Metronic进行管理 部署gulp 打开终端并进入到 Metronic 的 theme 根目录，运行以下代码1$ npm install //安装程序的依赖包    发现 npm install 报 node-sass 错误原因: npm install 的时候所下载的 node-sass 文件夹是空的在 C:\Users\admin\AppData\Roaming\np">
+    
+        <link rel="alternate" type="application/atom+xml" title="卡恩思欧的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">WSR</h5>
+          <a href="mailto:wangshrl@163.com" title="wangshrl@163.com" class="mail">wangshrl@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                存档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/wsrdadian" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/Wangshrl" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Metronic学习之路(一)</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Metronic学习之路(一)</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-12T01:42:47.000Z" itemprop="datePublished" class="page-time">
+  2019-03-12
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端学习/">前端学习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#部署gulp"><span class="post-toc-number">1.</span> <span class="post-toc-text">部署gulp</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#gulp-任务运用"><span class="post-toc-number">2.</span> <span class="post-toc-text">gulp 任务运用</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SASS-编译"><span class="post-toc-number">3.</span> <span class="post-toc-text">SASS 编译</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#RTL-SASS-编译"><span class="post-toc-number">4.</span> <span class="post-toc-text">RTL SASS 编译</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#CSS-和-JS-文件的压缩"><span class="post-toc-number">5.</span> <span class="post-toc-text">CSS 和 JS 文件的压缩</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#HTML-格式化"><span class="post-toc-number">6.</span> <span class="post-toc-text">HTML 格式化</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Metronic学习之路-一" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Metronic学习之路(一)</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-12 09:42:47" datetime="2019-03-12T01:42:47.000Z" itemprop="datePublished">2019-03-12</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端学习/">前端学习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>使用GULP构建工具对Metronic进行管理</p>
+<h1 id="部署gulp"><a href="#部署gulp" class="headerlink" title="部署gulp"></a>部署gulp</h1><ol>
+<li>打开终端并进入到 Metronic 的 theme 根目录，运行以下代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install //安装程序的依赖包</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>发现 <em>npm install</em> 报 <em>node-sass</em> 错误<br>原因: <em>npm install</em> 的时候所下载的 <em>node-sass</em> 文件夹是空的<br>在 <em>C:\Users\admin\AppData\Roaming\npm-cache\node-sass\3.13.1</em> 下面可以看到<br>解决方法:自己单独用 <em>npm i node-sass</em> 下载一遍<br>会在 <em>C:\Users\姓名AppData\Roaming\npm-cache\node-sass\4.7.2</em> 下面会有一个文件<br><em>win32-x64-57_binding.node</em> ,把这个文件复制到 <em>3.13.1</em> 下面然后重新 <em>npm install</em> 就解决了</li>
+</ul>
+<ol start="2">
+<li><p>全局安装gulp</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install gulp -g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试 <em>gulp</em>，在终端输入 gulp</p>
+</li>
+</ol>
+<ul>
+<li><p>报错 <em>Cannot find module ‘gulp-prettify’</em> 模块找不到<br>进入 <a href="https://www.npmjs.com" target="_blank" rel="noopener">npm</a>  搜索包名并安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i gulp-prettify</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>再次执行 gulp 命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ gulp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>出现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ gulp</span><br><span class="line">[09:53:07] Using gulpfile F:\web\metronic_v4.5.2\theme\gulpfile.js</span><br><span class="line">[09:53:07] Task never defined: default</span><br><span class="line">[09:53:07] To list available tasks, try running: gulp --tasks</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>说明 gulp 部署成功，只是默认任务还没有配置,需要看看 <em>gulpfile.js</em> 列出的其他任务。</p>
+</li>
+</ul>
+<ol start="4">
+<li>如果有其他问题，请参考<br><a href="https://segmentfault.com/a/1190000006804354?_ea=1135407" target="_blank" rel="noopener">初探前端自动化神器（Gulp）</a><br><a href="https://www.cnblogs.com/telwanggs/p/7065414.html" target="_blank" rel="noopener">Bootstrap 之 Metronic 模板的学习之路 - （7）GULP 前端自动化工具</a></li>
+</ol>
+<h1 id="gulp-任务运用"><a href="#gulp-任务运用" class="headerlink" title="gulp 任务运用"></a>gulp 任务运用</h1><ol>
+<li>gulp localhost</li>
+</ol>
+<ul>
+<li><p>安装 <em>Connect</em> 插件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install--save-dev gulp-connect</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><em>npm install –save-dev</em> 可以简化为 <em>npm i -D</em></p>
+</li>
+<li><p>为 web 服务器定义一个任务， <em>gulpfile.js</em> 文件中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var connect = require(&apos;gulp-connect&apos;);</span><br><span class="line"></span><br><span class="line">gulp.task(&apos;default&apos;,function() &#123;</span><br><span class="line">    connect.server();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>只要在终端/命令行中执行 gulp, 就可以启动 web 服务器，然后可以在浏览器中打开 <em>localhost:8080</em></p>
+</li>
+</ul>
+<ol start="2">
+<li>gulp localhost-live</li>
+</ol>
+<ul>
+<li>给 <em>connect.server()</em> 方法传入一个参数<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(&apos;default&apos;,function() &#123;</span><br><span class="line">    connect.server(&#123;</span><br><span class="line">      livereload: true</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="SASS-编译"><a href="#SASS-编译" class="headerlink" title="SASS 编译"></a>SASS 编译</h1><ul>
+<li>打开终端进入到 <em>gulpfile.js</em> 所在的 <em>theme</em> 目录。输入 <em>gulp sass</em> 命令执行手工构建任务。<br>输入 <em>gulp sass:watch</em> 运行 scss 实时监控 css 文件的编译，编译后的 css 文件会输出到 <em>assets</em> 目录。</li>
+</ul>
+<h1 id="RTL-SASS-编译"><a href="#RTL-SASS-编译" class="headerlink" title="RTL SASS 编译"></a>RTL SASS 编译</h1><ul>
+<li>因为 RTL 的主题文件和默认的主题文件不在同一个目录，一个在 theme_rtl ，一个在 theme，所以，在 theme_rtl 目录下，需要对 gulp 进行重新部署。</li>
+<li>然后进入 gulpfile.js 位于的 <em>theme_rtl</em> 目录。<br>确定最新修改的 SCSS 已通过 gulp sass 或 gulp sass:watch 命令编译。<br>运行 <em>gulp rtlcss</em> 命令执行 css 文件的 RTL 版本修改任务。<br>编译后的 RTL css 会被输出到 <em>assets</em> 目录.</li>
+</ul>
+<h1 id="CSS-和-JS-文件的压缩"><a href="#CSS-和-JS-文件的压缩" class="headerlink" title="CSS 和 JS 文件的压缩"></a>CSS 和 JS 文件的压缩</h1><ul>
+<li>在命令行下进入 theme 目录。运行 <em>gulp minify</em> 执行 css 和 js 文件压缩任务.<br>压缩后的文件会输出到 <em>assets</em> 目录.</li>
+</ul>
+<h1 id="HTML-格式化"><a href="#HTML-格式化" class="headerlink" title="HTML 格式化"></a>HTML 格式化</h1><ul>
+<li><em>gulp prettify</em> 该命令可以将 HTML 格式化缩进，对于 pre 和 code 两个标签内的内容不进行格式化。</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-03-12T02:50:40.989Z" itemprop="dateUpdated">2019-03-12 10:50:40</time>
+</span><br>
+
+
+        
+        如果博客内容对您有用请适当投喂哦~
+        
+    </div>
+    
+    <footer>
+        <a href="https://wsrdadian.github.io">
+            <img src="/img/avatar.jpg" alt="WSR">
+            WSR
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Metronic/">Metronic</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-一/&title=《Metronic学习之路(一)》 — 卡恩思欧的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-一/&title=《Metronic学习之路(一)》 — 卡恩思欧的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-一/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Metronic学习之路(一)》 — 卡恩思欧的博客&url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-一/&via=https://wsrdadian.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-一/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/08/没有密码怎么进入系统/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">没有密码怎么进入系统</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢投喂~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>WSR &copy; 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-一/&title=《Metronic学习之路(一)》 — 卡恩思欧的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-一/&title=《Metronic学习之路(一)》 — 卡恩思欧的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-一/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Metronic学习之路(一)》 — 卡恩思欧的博客&url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-一/&via=https://wsrdadian.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-一/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrUlEQVR42u3awQ7bIBAE0Pz/T7fXSm3cmV1IU+n5FMWO4XEAMsvrFV8/3ly/3v39+effzq7XjQsPDw/vUNdnXXz3/ufPz/1phwwPDw/vM7y8W88z8LuOPn+T3837jIeHh/dtvFkn2iFL2Hh4eHj/F+95m3tqY/3PFgY8PDy8R14e1LaBxbvuPn+fDPfhrAUPDw/vQhXpez5fqe/h4eHhravqsy1yO923cXDRWzw8PLwLvLa4lcepbazQlsrytvDw8PDO8mab2py6OQqwYePh4eHd40XrRhmkzqKNNuQdbtnx8PDwDvGeH0om5aQT+1aGQ4yHh4d3jZeU+dtpfRZPbN5cNIaHh4e3PjTQFsA2Jf/2aFe7ra9PluHh4eHFvE0okDS/CYjbReIv/xXw8PDwDvE2kWsbZ8yOdp3aoOPh4eHd4+0DhTzU2A/Q8OgAHh4e3oLXdrE9/DRbHo4NFh4eHt5HeEnwmj+5GY5ZkPHadxoPDw+v5CULQ16Uyt+Q1+uKN+Ph4eFd423i2lOF//2C9Ifn8fDw8C7w8pC0zYZPHSCYbdnx8PDwPsnbTOL1lH3ozVFNDw8PD+8QL5+g21JWfuAgX0jaCAMPDw/vHm82xbeFq3xr3sYcb9+Gh4eHd4HXHodqi1t5V/Iwtw0p8PDw8O7x8shgVpRqT0O17HqNwsPDw1vz2lLTLLZINuLte4otNR4eHt4F3mzqLxorp/WkxagMhoeHh3eItwkgZjHBqQ109Fs8PDy8C7x2wm0LV/kWfPbMEIOHh4e35s0Wg01329JaG3zg4eHhfYa3iRXyUlneVttifRsPDw/vg7wkMrgBbrfpeHh4eN/DazfNs2Bidh1b9/Dw8PACXhsN7IOJJCDOw+LVyQg8PDy8yffFH/57w/HcucM1PTw8PLwJ7yfe/GnO/iyJJQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '咦!回来啦!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
