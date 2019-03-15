@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>React基础学习（一） | 卡恩思欧的博客 | 不爱撸猫的摄影师不是好程序猿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#fcddb7">
+    
+    
+    <meta name="keywords" content="React">
+    <meta name="description" content="在安装 React 之前需要安装 Node 环境和 NPM 环境 安装并运行 安装 1234$ npm install -g create-react-appC:\Users\Administrator\AppData\Roaming\npm\create-react-app -&amp;gt; C:\Users\Administrator\AppData\Roaming\npm\node_modules">
+<meta name="keywords" content="React">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React基础学习（一）">
+<meta property="og:url" content="https://wsrdadian.github.io/2019/03/13/React基础学习（一）/index.html">
+<meta property="og:site_name" content="卡恩思欧的博客">
+<meta property="og:description" content="在安装 React 之前需要安装 Node 环境和 NPM 环境 安装并运行 安装 1234$ npm install -g create-react-appC:\Users\Administrator\AppData\Roaming\npm\create-react-app -&amp;gt; C:\Users\Administrator\AppData\Roaming\npm\node_modules">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-15T08:03:36.496Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React基础学习（一）">
+<meta name="twitter:description" content="在安装 React 之前需要安装 Node 环境和 NPM 环境 安装并运行 安装 1234$ npm install -g create-react-appC:\Users\Administrator\AppData\Roaming\npm\create-react-app -&amp;gt; C:\Users\Administrator\AppData\Roaming\npm\node_modules">
+    
+        <link rel="alternate" type="application/atom+xml" title="卡恩思欧的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">WSR</h5>
+          <a href="mailto:wangshrl@163.com" title="wangshrl@163.com" class="mail">wangshrl@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                存档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/wsrdadian" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/Wangshrl" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">React基础学习（一）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">React基础学习（一）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-13T03:20:57.000Z" itemprop="datePublished" class="page-time">
+  2019-03-13
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端学习/">前端学习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#安装并运行"><span class="post-toc-number">1.</span> <span class="post-toc-text">安装并运行</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#下一步任务"><span class="post-toc-number">2.</span> <span class="post-toc-text">下一步任务</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-React基础学习（一）" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">React基础学习（一）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-13 11:20:57" datetime="2019-03-13T03:20:57.000Z" itemprop="datePublished">2019-03-13</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端学习/">前端学习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>在安装 React 之前需要安装 Node 环境和 NPM 环境</p>
+<h1 id="安装并运行"><a href="#安装并运行" class="headerlink" title="安装并运行"></a>安装并运行</h1><ol>
+<li><p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ npm install -g create-react-app</span><br><span class="line">C:\Users\Administrator\AppData\Roaming\npm\create-react-app -&gt; C:\Users\Administrator\AppData\Roaming\npm\node_modules\create-react-app\index.js</span><br><span class="line">+ create-react-app@2.1.8</span><br><span class="line">added 63 packages from 20 contributors in 15.223s</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建一个项目</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">$ create-react-app my-new-app</span><br><span class="line"></span><br><span class="line">Creating a</span><br><span class="line"> new React app in F:\web\react\my-new-app.</span><br><span class="line"></span><br><span class="line">Installing packages. This might take a couple of minutes.</span><br><span class="line">Installing react, react-dom, and react-scripts...</span><br><span class="line"></span><br><span class="line">+ react-dom@16.8.4</span><br><span class="line">+ react-scripts@2.1.8</span><br><span class="line">+ react@16.8.4</span><br><span class="line">added 1839 packages from 718 contributors and audited 36232 packages in 301.026s</span><br><span class="line">found 63 low severity vulnerabilities</span><br><span class="line">  run `npm audit fix` to fix them, or `npm audit` for details</span><br><span class="line"></span><br><span class="line">Initialized a git repository.</span><br><span class="line"></span><br><span class="line">Success! Created my-new-app at F:\web\react\my-new-app</span><br><span class="line">Inside that directory, you can run several commands:</span><br><span class="line"></span><br><span class="line">  npm start</span><br><span class="line">    Starts the development server.</span><br><span class="line"></span><br><span class="line">  npm run build</span><br><span class="line">    Bundles the app into static files for production.</span><br><span class="line"></span><br><span class="line">  npm test</span><br><span class="line">    Starts the test runner.</span><br><span class="line"></span><br><span class="line">  npm run eject</span><br><span class="line">    Removes this tool and copies build dependencies, configuration files</span><br><span class="line">    and scripts into the app directory. If you do this, you can’t go back!</span><br><span class="line"></span><br><span class="line">We suggest that you begin by typing:</span><br><span class="line"></span><br><span class="line">  cd my-new-app</span><br><span class="line">  npm start</span><br><span class="line"></span><br><span class="line">Happy hacking!</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">$ cd my-new-app/</span><br><span class="line"></span><br><span class="line">Administrator@KHMD9Q7MXH8OBVI MINGW64 /f/web/react/my-new-app (master)</span><br><span class="line">$ npm start</span><br><span class="line"></span><br><span class="line">&gt; my-new-app@0.1.0 start F:\web\react\my-new-app</span><br><span class="line">&gt; react-scripts start</span><br><span class="line"></span><br><span class="line">Starting the development server...</span><br><span class="line"></span><br><span class="line">Compiled successfully!</span><br><span class="line"></span><br><span class="line">You can now view my-new-app in the browser.</span><br><span class="line"></span><br><span class="line">  Local:            http://localhost:3000/</span><br><span class="line">  On Your Network:  http://192.168.1.101:3000/</span><br><span class="line"></span><br><span class="line">Note that the development build is not optimized.</span><br><span class="line">To create a production build, use npm run build.</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="下一步任务"><a href="#下一步任务" class="headerlink" title="下一步任务"></a>下一步任务</h1><p>React脚手架安装完成，接下来是完成一个ToDoList练习。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-03-15T08:03:36.496Z" itemprop="dateUpdated">2019-03-15 16:03:36</time>
+</span><br>
+
+
+        
+        如果博客内容对您有用请适当投喂哦~
+        
+    </div>
+    
+    <footer>
+        <a href="https://wsrdadian.github.io">
+            <img src="/img/avatar.jpg" alt="WSR">
+            WSR
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/03/13/React基础学习（一）/&title=《React基础学习（一）》 — 卡恩思欧的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/03/13/React基础学习（一）/&title=《React基础学习（一）》 — 卡恩思欧的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/03/13/React基础学习（一）/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《React基础学习（一）》 — 卡恩思欧的博客&url=https://wsrdadian.github.io/2019/03/13/React基础学习（一）/&via=https://wsrdadian.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/03/13/React基础学习（一）/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/03/15/百度地图瓦片相关问题/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">百度地图瓦片相关问题</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/13/Metronic学习之路-二/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Metronic学习之路(二)</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢投喂~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>WSR &copy; 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/03/13/React基础学习（一）/&title=《React基础学习（一）》 — 卡恩思欧的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/03/13/React基础学习（一）/&title=《React基础学习（一）》 — 卡恩思欧的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/03/13/React基础学习（一）/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《React基础学习（一）》 — 卡恩思欧的博客&url=https://wsrdadian.github.io/2019/03/13/React基础学习（一）/&via=https://wsrdadian.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/03/13/React基础学习（一）/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACs0lEQVR42u3aQW7DQAgF0Nz/0um2i9j5wNCk0vMqah173lQaKPB4xNfz13X/k6vPvevqXYcvPDw8vMHS8xdcvazKnq/n6h48PDy8bd7Va+4P+vtlJd/NA0C+NXh4eHjfxrv/VrIFyRPyLcPDw8P7j7w8JPQS6w8HBjw8PLxBMSI5spMtqBaIq6VhPDw8vG1e3kX6ns8r/T08PDy8cVf9/sDNw8apDS2vFg8PD2+B1yunTqaeNppeb9aJh4eHt8CbH76TQYG82DEaCMPDw8M7yksO/VHzvpgu9wYULu/Ew8PDO8qrtqOS4zhfel537Q004OHh4W3w8mN6PiY1CUXVoIWHh4e3x9to5E8GtnqB4U1/Dw8PD2+ZVx0ISJLaasG3mkZf3oOHh4e3zMuT2smm9Jpq1RLGqAaMh4eH12qD9cq7ybeSllieOhc2Ag8PD+8Qr5Cetsq1eXioDhlEW4OHh4e3wOs1vfIgkSffSWhpDiXg4eHhHeVVlzWHVdtak4IvHh4e3h4vKRxMCrU9xqSpFvX38PDw8Aa8SeI7b/+fTbJf1Frw8PDwFnjzUdReGEie+YivF/fj4eHhLfNODa32hgmqowPRevDw8PAWeElBoRcSqk+ebF80xICHh4d3lJcsbl446D0tLxBfrgQPDw9vjdcrK+TIJLHuNd6iKgUeHh7eH/KqjajqPdVyQ3m1eHh4eGu8vA02aVNVn/CBLh8eHh7e7f3P4tVbxKlgU/4tHh4e3gJvcojnpYG8kFG9pxc88PDw8Oa8/J/8HNNraE2GFcozEXh4eHhjXnVooJfgFlr+rQJEYegKDw8P7895vXS8Ck7C0psyBB4eHt4X8JKstTq81Uu+o3CCh4eHt8bLSwNJYMhT8ATc+5Pg4eHh7fHKw0zFNLcaGJpFh3l/Dw8PD+897we/cSIWQQfc2AAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '咦!回来啦!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

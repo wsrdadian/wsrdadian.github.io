@@ -20,15 +20,19 @@
     <meta name="theme-color" content="#fcddb7">
     
     
-    <meta name="keywords" content="">
-    <meta property="og:type" content="article">
+    <meta name="keywords" content="Metronic">
+    <meta name="description" content="进行框架搭建基础搭建，进行模块化，保持每个页面局部集中；排除不需要的文件和插件。 思路 假定你在 7 个可用的子主题中选择了 Admin 1(admin_1) 子主题。 这个主题有两个部分. 首先是包含了所有 css、js和第三方插件的 assets 文件夹，接着是包含实际 HTML 模板的模板文件夹。可以参考启动时调用的 theme/assets 和 theme/admin_1。 theme/a">
+<meta name="keywords" content="Metronic">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Metronic学习之路(二)">
-<meta property="og:url" content="https://wsrdadian.github.io/2019/03/12/Metronic学习之路-二/index.html">
+<meta property="og:url" content="https://wsrdadian.github.io/2019/03/13/Metronic学习之路-二/index.html">
 <meta property="og:site_name" content="卡恩思欧的博客">
+<meta property="og:description" content="进行框架搭建基础搭建，进行模块化，保持每个页面局部集中；排除不需要的文件和插件。 思路 假定你在 7 个可用的子主题中选择了 Admin 1(admin_1) 子主题。 这个主题有两个部分. 首先是包含了所有 css、js和第三方插件的 assets 文件夹，接着是包含实际 HTML 模板的模板文件夹。可以参考启动时调用的 theme/assets 和 theme/admin_1。 theme/a">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-12T09:02:24.095Z">
+<meta property="og:updated_time" content="2019-03-13T03:18:48.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Metronic学习之路(二)">
+<meta name="twitter:description" content="进行框架搭建基础搭建，进行模块化，保持每个页面局部集中；排除不需要的文件和插件。 思路 假定你在 7 个可用的子主题中选择了 Admin 1(admin_1) 子主题。 这个主题有两个部分. 首先是包含了所有 css、js和第三方插件的 assets 文件夹，接着是包含实际 HTML 模板的模板文件夹。可以参考启动时调用的 theme/assets 和 theme/admin_1。 theme/a">
     
         <link rel="alternate" type="application/atom+xml" title="卡恩思欧的博客" href="/atom.xml">
     
@@ -141,10 +145,12 @@
         <h1 class="title">Metronic学习之路(二)</h1>
         <h5 class="subtitle">
             
-                <time datetime="2019-03-12T08:09:16.000Z" itemprop="datePublished" class="page-time">
-  2019-03-12
+                <time datetime="2019-03-13T01:28:16.000Z" itemprop="datePublished" class="page-time">
+  2019-03-13
 </time>
 
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端学习/">前端学习</a></li></ul>
 
             
         </h5>
@@ -158,15 +164,24 @@
 
 <div class="container body-wrap">
     
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#思路"><span class="post-toc-number">1.</span> <span class="post-toc-text">思路</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#模块化"><span class="post-toc-number">2.</span> <span class="post-toc-text">模块化</span></a></li></ol>
+        </nav>
+    </aside>
+
 
 <article id="post-Metronic学习之路-二" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
         <h1 class="post-card-title">Metronic学习之路(二)</h1>
         <div class="post-meta">
-            <time class="post-time" title="2019-03-12 16:09:16" datetime="2019-03-12T08:09:16.000Z" itemprop="datePublished">2019-03-12</time>
+            <time class="post-time" title="2019-03-13 09:28:16" datetime="2019-03-13T01:28:16.000Z" itemprop="datePublished">2019-03-13</time>
 
             
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端学习/">前端学习</a></li></ul>
+
 
 
             
@@ -177,7 +192,17 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <p>进行框架搭建基础搭建，进行模块化，保持每个页面局部集中；排除不需要的文件和插件。</p>
+<h1 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h1><ul>
+<li>假定你在 7 个可用的子主题中选择了 Admin 1(admin_1) 子主题。</li>
+<li>这个主题有两个部分. 首先是包含了所有 css、js和第三方插件的 assets 文件夹，接着是包含实际 HTML 模板的模板文件夹。可以参考启动时调用的 theme/assets 和 theme/admin_1。</li>
+<li>theme/assets 的 layout 文件夹里你可以发现有 7 个独立的 layout 文件夹（如 layout，layou2, … layout7）,你可以保留你用到的 theme/assets/layouts/layout 和 theme/layouts/global 然后将你用不到的 layout 文件夹删除。 这样在theme/assets/layouts 文件夹里你就只有 theme/assets/layouts/layout 和 theme/assets/layouts/global 两个文件夹了。</li>
+<li>theme/admin_1 文件夹在 layout_blank_page.html 打开时被引用。这个模板包括了压缩后的 css、js 和第三方插件。你可以用此模板作为你应用程序的起点。试着将 layout_blank_page.html 的代码分离成模块化(header, sidebar, footer, main content)，并保持每个页面局部集中。</li>
+<li>在第三方插件文件夹(theme/assets/global/plugins)，你可以排除你用不到的插件. 默认 Metronic 包括 80 个第三方插件， 大部分主题你不会用到，你可以将他们排除。</li>
+<li>参考:<a href="https://www.cnblogs.com/yanjialin/p/6003475.html" target="_blank" rel="noopener">Metronic学习之路</a></li>
+</ul>
+<h1 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h1><p>参考文章：<a href="https://www.cnblogs.com/smark/p/9789472.html" target="_blank" rel="noopener">传统HTML页面实现模块化加载</a>  <a href="https://www.cnblogs.com/doublenet/p/5102759.html" target="_blank" rel="noopener">网站需要模块化的原因</a>  <a href="https://blog.csdn.net/wsymcxy/article/details/82178194" target="_blank" rel="noopener">Web前端主流模块化框架的区别</a>  </p>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -185,7 +210,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-03-12T09:02:24.095Z" itemprop="dateUpdated">2019-03-12 17:02:24</time>
+    最后更新时间：<time datetime="2019-03-13T03:18:48.585Z" itemprop="dateUpdated">2019-03-13 11:18:48</time>
 </span><br>
 
 
@@ -211,6 +236,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Metronic/">Metronic</a></li></ul>
+
 
             
 <div class="page-share-wrap">
@@ -219,7 +246,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-二/&title=《Metronic学习之路(二)》 — 卡恩思欧的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/03/13/Metronic学习之路-二/&title=《Metronic学习之路(二)》 — 卡恩思欧的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -229,22 +256,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-二/&title=《Metronic学习之路(二)》 — 卡恩思欧的博客&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/03/13/Metronic学习之路-二/&title=《Metronic学习之路(二)》 — 卡恩思欧的博客&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-二/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/03/13/Metronic学习之路-二/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Metronic学习之路(二)》 — 卡恩思欧的博客&url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-二/&via=https://wsrdadian.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Metronic学习之路(二)》 — 卡恩思欧的博客&url=https://wsrdadian.github.io/2019/03/13/Metronic学习之路-二/&via=https://wsrdadian.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-二/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/03/13/Metronic学习之路-二/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -264,7 +291,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/03/13/React基础学习（一）/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">React基础学习（一）</h4>
+      </a>
+    </div>
   
 
   
@@ -358,7 +392,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-二/&title=《Metronic学习之路(二)》 — 卡恩思欧的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/03/13/Metronic学习之路-二/&title=《Metronic学习之路(二)》 — 卡恩思欧的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -368,22 +402,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-二/&title=《Metronic学习之路(二)》 — 卡恩思欧的博客&source=" data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/03/13/Metronic学习之路-二/&title=《Metronic学习之路(二)》 — 卡恩思欧的博客&source=" data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-二/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/03/13/Metronic学习之路-二/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Metronic学习之路(二)》 — 卡恩思欧的博客&url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-二/&via=https://wsrdadian.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Metronic学习之路(二)》 — 卡恩思欧的博客&url=https://wsrdadian.github.io/2019/03/13/Metronic学习之路-二/&via=https://wsrdadian.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/03/12/Metronic学习之路-二/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/03/13/Metronic学习之路-二/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -394,7 +428,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACu0lEQVR42u3a0WojMQwF0Pz/T2ehTwutmyvJSls48xTCdOLjQqxc6fGIr+fH9fmd/99/frpOd56ek9zz2Ljw8PDwWks/Xd9j8qd9v1nVLU7WjIeHh7fNyx+XgPNj4/S3yWGTHGB4eHh4P8urVrB5qZ0UzXh4eHh/nZd/WedHy3y78fDw8N7JS8KI/HW1UK6W0StZCx4eHl7M60WoP/t6sb+Hh4eHN+iq5039u6MD1TuPT8DDw8Nb4PWaTPmiezHuZLAg+sWAh4eHN+DdXdxk6GoSahzXj4eHh7fMqy4iOSR6R06+0S+2Gw8PD2+NV/15X235TwDJdh/vxMPDw1vgJVHpJHqIhqKKJXWyEYWWGB4eHl6LVy2Fk0GoSdDQi49fNMDw8PDwLvGq5ex8ZGqvNP/imXh4eHhrvDycTUKKjUo/DymO41Z4eHh4C7w5tdmmihtdeSPtRUqNh4eHN+b1AoiNsYN8i6OjAg8PD2+Bdzd+7cUWvRCkECXj4eHhLfMmR8UkDq6W3YUgGA8PD+8qr/ezv3dgVA+V/DnHzcLDw8Nb4yXNp+oUaHkp8dBA0lTDw8PD2+Yljfy80TUB9GKRaOgKDw8P7xKv90WffEB1C3rleGG8FQ8PD+8qr/rBha/jYJuSY6AXheDh4eHt8XptsHzpvZGsasn+4ucBHh4e3iVebxHzZtg8BMHDw8P7PbzeUFSy0B5g9AQ8PDy8Bd4kXMi/+qtLqW5WeWvw8PDwBrxn8cqL4/cU0KNzDw8PD6/Fq5ateVB7a4ygegg1i3s8PDy8Im/SakpaVtVNyUOQ6J+Bh4eHt8brhQ75gnrBay8ajh6Bh4eH9xbevOTNB7Z6gfIXd+Lh4eH9Gl5eTCfRQzU1ySNdPDw8vD3eZPRqgpyHv6MBAjw8PLwW724DrBoxVDdoMp6Fh4eHN+b9A1fNGDyGb9yvAAAAAElFTkSuQmCC" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuklEQVR42u3awU4jMRAE0Pz/T7PSXiFJVbcNObw5oYQZ+xlp3JT78Yivr//X90+Sz5/95vdvk9953Ljw8PDwRlN/dr2edPucZ/e2S5yPhYeHh3ePt39c++3rsV7flcwZDw8P7xN4eYG7X458Pnh4eHifz8u3jVlIMZsPHh4e3u/zkpd4++i8UG7L6CtZCx4eHl7Mm0Wof/vzxfM9PDw8vMWpenuo30a3bSRRzxYPDw/vAm92yNR+28a4m8aC6D8GPDw8vDXvxuTapqs2Mq7DXDw8PLyjvNkkbrRMzRq/3pTveHh4eBd4+QYwO/Lf17evlzuaCR4eHt4hXvuCTgKIJIrdNHjlY+Hh4eHd4LXFa96YtQka8kUswHh4eHiHeHmRun/F3y7Nf3gmHh4e3jXeLIbYHHS1LQL5KG/arfDw8PAu89qX/uaYaraIbzYnPDw8vAu8UwdgycCvp5JHwLMNCQ8PD+8sry1V2/as2RYyW8phTxkeHh5eydsXsm3jVBt5XOkpw8PDwzvKy1+4yV2zQ7L8OfXGgIeHh7fgJaFtAssj4DbCSCLapzPBw8PDu8bLH9oWuC2gbg7Im67w8PDwDvGSYncf2ubRxqwtIPnz4OHh4Z3ltQPnZXcbZCRLXDco4OHh4V3g5U1XSRCQ3zWLGNqNBw8PD+8sb3PglEe3bXvB7FgODw8P7694my0hD4XbgHj4BDw8PLwLvCQknaWjsyat6BAr3n7w8PDwbvC+yqu963YBPdz38PDw8Ba8tmxtt5B9G0HeZLAp6/Hw8PBa3mYzaIOJ/SbRxsd4eHh493jt8VX+Kp9FEsPiOH8EHh4e3q/wkqkn9yafnxoFDw8P7xN4+4I7OfpKYNGi4+Hh4V3j5VPMX/eztoBNzHEga8HDw8MbtV7lB2BFnBrHHLON5HBggYeHh/fzKP8AbdKIvVpLgkAAAAAASUVORK5CYII=" alt="微信分享二维码">
 </div>
 
 
