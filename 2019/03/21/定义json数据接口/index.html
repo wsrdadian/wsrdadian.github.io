@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="百度地图">
-    <meta name="description" content="需求： 绘制两点间带箭头的线段，起点终点使用标注标记并点击标注弹出信息窗口。 绘制热力图，根据点坐标及权重（权重越大，点显示越显著）。 添加点击出现弹出框的标注点。  数据 根据函数需要，设计需要传入的参数数据，用json格式写出。 1url?markerInfo=[&amp;#123;&amp;quot;lng&amp;quot;:&amp;quot;116.417854&amp;quot;,&amp;quot;lat&amp;quot;:&amp;quot">
+    <meta name="description" content="需求 绘制两点间带箭头的线段，起点终点使用标注标记并点击标注弹出信息窗口。 绘制热力图，根据点坐标及权重（权重越大，点显示越显著）。 添加点击出现弹出框的标注点。  数据 根据函数需要，设计需要传入的参数数据，用json格式写出。 1url?markerInfo=[&amp;#123;&amp;quot;lng&amp;quot;:&amp;quot;116.417854&amp;quot;,&amp;quot;lat&amp;quot;:&amp;quot;">
 <meta name="keywords" content="百度地图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="定义json数据接口">
 <meta property="og:url" content="https://wsrdadian.github.io/2019/03/21/定义json数据接口/index.html">
 <meta property="og:site_name" content="卡恩思欧的博客">
-<meta property="og:description" content="需求： 绘制两点间带箭头的线段，起点终点使用标注标记并点击标注弹出信息窗口。 绘制热力图，根据点坐标及权重（权重越大，点显示越显著）。 添加点击出现弹出框的标注点。  数据 根据函数需要，设计需要传入的参数数据，用json格式写出。 1url?markerInfo=[&amp;#123;&amp;quot;lng&amp;quot;:&amp;quot;116.417854&amp;quot;,&amp;quot;lat&amp;quot;:&amp;quot">
+<meta property="og:description" content="需求 绘制两点间带箭头的线段，起点终点使用标注标记并点击标注弹出信息窗口。 绘制热力图，根据点坐标及权重（权重越大，点显示越显著）。 添加点击出现弹出框的标注点。  数据 根据函数需要，设计需要传入的参数数据，用json格式写出。 1url?markerInfo=[&amp;#123;&amp;quot;lng&amp;quot;:&amp;quot;116.417854&amp;quot;,&amp;quot;lat&amp;quot;:&amp;quot;">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-21T08:36:05.958Z">
+<meta property="og:updated_time" content="2019-03-21T08:49:20.898Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="定义json数据接口">
-<meta name="twitter:description" content="需求： 绘制两点间带箭头的线段，起点终点使用标注标记并点击标注弹出信息窗口。 绘制热力图，根据点坐标及权重（权重越大，点显示越显著）。 添加点击出现弹出框的标注点。  数据 根据函数需要，设计需要传入的参数数据，用json格式写出。 1url?markerInfo=[&amp;#123;&amp;quot;lng&amp;quot;:&amp;quot;116.417854&amp;quot;,&amp;quot;lat&amp;quot;:&amp;quot">
+<meta name="twitter:description" content="需求 绘制两点间带箭头的线段，起点终点使用标注标记并点击标注弹出信息窗口。 绘制热力图，根据点坐标及权重（权重越大，点显示越显著）。 添加点击出现弹出框的标注点。  数据 根据函数需要，设计需要传入的参数数据，用json格式写出。 1url?markerInfo=[&amp;#123;&amp;quot;lng&amp;quot;:&amp;quot;116.417854&amp;quot;,&amp;quot;lat&amp;quot;:&amp;quot;">
     
         <link rel="alternate" type="application/atom+xml" title="卡恩思欧的博客" href="/atom.xml">
     
@@ -167,7 +167,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#需求："><span class="post-toc-number">1.</span> <span class="post-toc-text">需求：</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数据"><span class="post-toc-number">2.</span> <span class="post-toc-text">数据</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#绘制"><span class="post-toc-number">3.</span> <span class="post-toc-text">绘制</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一些小优化"><span class="post-toc-number">4.</span> <span class="post-toc-text">一些小优化</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#需求"><span class="post-toc-number">1.</span> <span class="post-toc-text">需求</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#数据"><span class="post-toc-number">2.</span> <span class="post-toc-text">数据</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#绘制"><span class="post-toc-number">3.</span> <span class="post-toc-text">绘制</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#一些小优化"><span class="post-toc-number">4.</span> <span class="post-toc-text">一些小优化</span></a></li></ol>
         </nav>
     </aside>
 
@@ -192,7 +192,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="需求："><a href="#需求：" class="headerlink" title="需求："></a>需求：</h1><ol>
+            <h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><ol>
 <li>绘制两点间带箭头的线段，起点终点使用标注标记并点击标注弹出信息窗口。</li>
 <li>绘制热力图，根据点坐标及权重（权重越大，点显示越显著）。</li>
 <li>添加点击出现弹出框的标注点。</li>
@@ -270,7 +270,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-03-21T08:36:05.958Z" itemprop="dateUpdated">2019-03-21 16:36:05</time>
+    最后更新时间：<time datetime="2019-03-21T08:49:20.898Z" itemprop="dateUpdated">2019-03-21 16:49:20</time>
 </span><br>
 
 
