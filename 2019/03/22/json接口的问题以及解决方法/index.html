@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>json接口的问题以及解决方法 | 王世茹的博客 | 不爱撸猫的摄影师不是好程序猿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#fcddb7">
+    
+    
+    <meta name="keywords" content="百度地图">
+    <meta name="description" content="问题接上一篇《定义json数据接口》，根据新的需求，现有的代码已经不能满足，所以要把部分代码推倒重写，依然是json的问题：在上一篇中，url获取之后，先进行 &amp;amp; 切割，再进行 = 切割,由于对 = 进行切割，所以当我们想往信息窗口的 info 中添加 html 时，如果其中带有 = ，会导致被切割，字符串被打断。由此提出两个解决办法：  指定切割第一次出现的 = 定义正则匹配函数  解决">
+<meta name="keywords" content="百度地图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="json接口的问题以及解决方法">
+<meta property="og:url" content="https://wsrdadian.github.io/2019/03/22/json接口的问题以及解决方法/index.html">
+<meta property="og:site_name" content="王世茹的博客">
+<meta property="og:description" content="问题接上一篇《定义json数据接口》，根据新的需求，现有的代码已经不能满足，所以要把部分代码推倒重写，依然是json的问题：在上一篇中，url获取之后，先进行 &amp;amp; 切割，再进行 = 切割,由于对 = 进行切割，所以当我们想往信息窗口的 info 中添加 html 时，如果其中带有 = ，会导致被切割，字符串被打断。由此提出两个解决办法：  指定切割第一次出现的 = 定义正则匹配函数  解决">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-22T06:47:57.303Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="json接口的问题以及解决方法">
+<meta name="twitter:description" content="问题接上一篇《定义json数据接口》，根据新的需求，现有的代码已经不能满足，所以要把部分代码推倒重写，依然是json的问题：在上一篇中，url获取之后，先进行 &amp;amp; 切割，再进行 = 切割,由于对 = 进行切割，所以当我们想往信息窗口的 info 中添加 html 时，如果其中带有 = ，会导致被切割，字符串被打断。由此提出两个解决办法：  指定切割第一次出现的 = 定义正则匹配函数  解决">
+    
+        <link rel="alternate" type="application/atom+xml" title="王世茹的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">WSR</h5>
+          <a href="mailto:wangshrl@163.com" title="wangshrl@163.com" class="mail">wangshrl@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                存档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/wsrdadian" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/Wangshrl" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">json接口的问题以及解决方法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">json接口的问题以及解决方法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-22T05:49:14.000Z" itemprop="datePublished" class="page-time">
+  2019-03-22
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端学习/">前端学习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#解决"><span class="post-toc-number">2.</span> <span class="post-toc-text">解决</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#小总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">小总结</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-json接口的问题以及解决方法" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">json接口的问题以及解决方法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-22 13:49:14" datetime="2019-03-22T05:49:14.000Z" itemprop="datePublished">2019-03-22</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端学习/">前端学习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><p>接上一篇《定义json数据接口》，根据新的需求，现有的代码已经不能满足，所以要把部分代码推倒重写，依然是json的问题：在上一篇中，url获取之后，先进行 &amp; 切割，再进行 = 切割,由于对 = 进行切割，所以当我们想往信息窗口的 info 中添加 html 时，如果其中带有 = ，会导致被切割，字符串被打断。由此提出两个解决办法：</p>
+<ul>
+<li>指定切割第一次出现的 =</li>
+<li>定义正则匹配函数</li>
+</ul>
+<h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><ul>
+<li><p>获取 url 参数，这里将 url 和想获取的数据名 key 传入到正则匹配函数 getQueryString 中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function getUrl()&#123;</span><br><span class="line">    var url = decodeURI(window.location.search.substring(1));</span><br><span class="line">    getQueryString(url,&apos;data&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>正则匹配传入的名字和url，根据名字从 url 中匹配 val 值，如果匹配成功，则将字符串转为 json 对象，对格式进行判断，如果正确则进行参数匹配。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function getQueryString(url,name) &#123;  </span><br><span class="line">    var reg = new RegExp(&quot;(^|&amp;)&quot; + name + &quot;=([^&amp;]*)(&amp;|$)&quot;);  //开始位置或者&amp;符+名+[个数不限]+&amp;符或者结束位置</span><br><span class="line">    console.log(reg);</span><br><span class="line">    var r = url.match(reg);  </span><br><span class="line">    if (r != null) &#123;  </span><br><span class="line">        try&#123;</span><br><span class="line">            data = $.parseJSON(r[2]);</span><br><span class="line">            matchQuery(data);</span><br><span class="line">        &#125;catch(err)&#123;</span><br><span class="line">            alert(&quot;参数格式有误！&quot;);</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">    return null;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>得到 json 对象后，对其进行遍历，逐层遍历出想要的点对象，将对象传入封装好的函数中即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function matchQuery(data)&#123;</span><br><span class="line">    $.each(data, function (key, val) &#123;</span><br><span class="line">        $.each(data[key], function (k, v) &#123;</span><br><span class="line">            if(k == &apos;markerInfo&apos;)&#123;</span><br><span class="line">                addMarkerInfo(v);</span><br><span class="line">            &#125;</span><br><span class="line">            if(k == &apos;heatPoints&apos;)&#123;</span><br><span class="line">                addHeat(v);</span><br><span class="line">            &#125;</span><br><span class="line">            if(k == &apos;linePoints&apos;)&#123;</span><br><span class="line">                addLine(v);</span><br><span class="line">                addMarkerInfo(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h1><p>使用正则匹配很方便，虽然看起来像乱码，但是还是很实用的，需要学习。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-03-22T06:47:57.303Z" itemprop="dateUpdated">2019-03-22 14:47:57</time>
+</span><br>
+
+
+        
+        如果博客内容对您有用请适当投喂哦~
+        
+    </div>
+    
+    <footer>
+        <a href="https://wsrdadian.github.io">
+            <img src="/img/avatar.jpg" alt="WSR">
+            WSR
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/百度地图/">百度地图</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/03/22/json接口的问题以及解决方法/&title=《json接口的问题以及解决方法》 — 王世茹的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/03/22/json接口的问题以及解决方法/&title=《json接口的问题以及解决方法》 — 王世茹的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/03/22/json接口的问题以及解决方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《json接口的问题以及解决方法》 — 王世茹的博客&url=https://wsrdadian.github.io/2019/03/22/json接口的问题以及解决方法/&via=https://wsrdadian.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/03/22/json接口的问题以及解决方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/21/定义json数据接口/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">定义json数据接口</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢投喂~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>WSR &copy; 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/03/22/json接口的问题以及解决方法/&title=《json接口的问题以及解决方法》 — 王世茹的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/03/22/json接口的问题以及解决方法/&title=《json接口的问题以及解决方法》 — 王世茹的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/03/22/json接口的问题以及解决方法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《json接口的问题以及解决方法》 — 王世茹的博客&url=https://wsrdadian.github.io/2019/03/22/json接口的问题以及解决方法/&via=https://wsrdadian.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/03/22/json接口的问题以及解决方法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACt0lEQVR42u3a0W7bMAwF0P7/T2+vBdY494rilgHHT4aTyjwKIKkkv77i69e36/uT5P77kz+fv/r+8xsvX3h4eHiD0JMXP4f4avzn+ySSZCJ+iAQPDw9vjdeG9RxcMk77JNkk8PDw8D6TFw0ahJ6Hi4eHh/e/85INoE1YtCQ8PDy8T+C1KdQ2MZF82k735VwLHh4eXszLq0ifc79S38PDw8MbV9Unm0SyYbRlszpaPDw8vAVevuDmRa8kbTEfuRgNDw8Pb4E3OYueFb3a9EGb0sXDw8Pb47VBt22jeehJMaz4fdq5xMPDwxvkPNtGgbxF9azF6nlCo9YBPDw8vDVemxo422bmqeELdTw8PDy8haaBtqB1lrqdbEiT1AYeHh7eLV67NG+kYiftVm/iwcPDw7vEaxfiJNz2SJ1PU5vCwMPDw9vjJSnRSbLgViK4Pr7j4eHhLfPalqY2rFtJ4aQk9rLpCg8PD+8Sry3wT47gOe/CZOHh4eGt8UZtTIND89lEFz8JHh4e3j/inS3Tc8aF5DIeHh7eX+GdNTklQbcLfbvZvCmA4eHh4V3i5UX6SbE/x0ySv0WTFh4eHt6ANzkity1QyXaST3fyRjw8PLwNXtJQ1S7i+YE7SX/kY76MHw8PD2+B16ZZ2yaAJK2QJyPqjQEPDw9vgZeE27ZSte0CeehtkgIPDw9vj5cUqOrifTx9Sb75bNvAw8PD2+O1i36btqgX9HjzePOT4OHh4V3lTYpVeVtVu9m07VYvP8XDw8Nb4OXXfNC8iDW5P7zw8PDwSl7bFJUnC9p3JdtJ/k08PDy8bV6RvSgDzY/CeZLiOWGBh4eH9/m8s4N4/iT/9Id48PDw8D6M14KTctrZdaF1AA8PD6/ktcfis8JY3qAw76TCw8PD2+Nd+If/6K+ShoOzVi08PDy8Nd5vUXKmS4MWJVQAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '咦!回来啦!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
