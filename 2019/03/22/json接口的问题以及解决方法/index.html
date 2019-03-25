@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="百度地图">
-    <meta name="description" content="问题接上一篇《定义json数据接口》，根据新的需求，现有的代码已经不能满足，所以要把部分代码推倒重写，依然是json的问题：在上一篇中，url获取之后，先进行 &amp;amp; 切割，再进行 = 切割,由于对 = 进行切割，所以当我们想往信息窗口的 info 中添加 html 时，如果其中带有 = ，会导致被切割，字符串被打断。由此提出两个解决办法：  指定切割第一次出现的 = 定义正则匹配函数  解决">
+    <meta name="description" content="问题接上一篇《定义json数据接口》，根据新的需求，现有的代码已经不能满足，所以要把部分代码推倒重写，依然是json的问题：在上一篇中，url获取之后，先进行 &amp;amp; 切割，再进行 = 切割,由于对 = 进行切割，所以当我们想往信息窗口的 info 中添加 html 时，如果其中带有 = ，会导致被切割，字符串被打断。由此提出两个解决办法：  指定切割第一次出现的 = 定义正则匹配函数 参数中">
 <meta name="keywords" content="百度地图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="json接口的问题以及解决方法">
 <meta property="og:url" content="https://wsrdadian.github.io/2019/03/22/json接口的问题以及解决方法/index.html">
 <meta property="og:site_name" content="王世茹的博客">
-<meta property="og:description" content="问题接上一篇《定义json数据接口》，根据新的需求，现有的代码已经不能满足，所以要把部分代码推倒重写，依然是json的问题：在上一篇中，url获取之后，先进行 &amp;amp; 切割，再进行 = 切割,由于对 = 进行切割，所以当我们想往信息窗口的 info 中添加 html 时，如果其中带有 = ，会导致被切割，字符串被打断。由此提出两个解决办法：  指定切割第一次出现的 = 定义正则匹配函数  解决">
+<meta property="og:description" content="问题接上一篇《定义json数据接口》，根据新的需求，现有的代码已经不能满足，所以要把部分代码推倒重写，依然是json的问题：在上一篇中，url获取之后，先进行 &amp;amp; 切割，再进行 = 切割,由于对 = 进行切割，所以当我们想往信息窗口的 info 中添加 html 时，如果其中带有 = ，会导致被切割，字符串被打断。由此提出两个解决办法：  指定切割第一次出现的 = 定义正则匹配函数 参数中">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-03-22T06:47:57.303Z">
+<meta property="og:updated_time" content="2019-03-25T05:53:41.575Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="json接口的问题以及解决方法">
-<meta name="twitter:description" content="问题接上一篇《定义json数据接口》，根据新的需求，现有的代码已经不能满足，所以要把部分代码推倒重写，依然是json的问题：在上一篇中，url获取之后，先进行 &amp;amp; 切割，再进行 = 切割,由于对 = 进行切割，所以当我们想往信息窗口的 info 中添加 html 时，如果其中带有 = ，会导致被切割，字符串被打断。由此提出两个解决办法：  指定切割第一次出现的 = 定义正则匹配函数  解决">
+<meta name="twitter:description" content="问题接上一篇《定义json数据接口》，根据新的需求，现有的代码已经不能满足，所以要把部分代码推倒重写，依然是json的问题：在上一篇中，url获取之后，先进行 &amp;amp; 切割，再进行 = 切割,由于对 = 进行切割，所以当我们想往信息窗口的 info 中添加 html 时，如果其中带有 = ，会导致被切割，字符串被打断。由此提出两个解决办法：  指定切割第一次出现的 = 定义正则匹配函数 参数中">
     
         <link rel="alternate" type="application/atom+xml" title="王世茹的博客" href="/atom.xml">
     
@@ -196,6 +196,7 @@
 <ul>
 <li>指定切割第一次出现的 =</li>
 <li>定义正则匹配函数</li>
+<li>参数中有 html 携带的 . 和 / 等特殊符号导致字符串转对象时报错</li>
 </ul>
 <h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><ul>
 <li><p>获取 url 参数，这里将 url 和想获取的数据名 key 传入到正则匹配函数 getQueryString 中：</p>
@@ -207,6 +208,11 @@
 <li><p>得到 json 对象后，对其进行遍历，逐层遍历出想要的点对象，将对象传入封装好的函数中即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">function matchQuery(data)&#123;</span><br><span class="line">    $.each(data, function (key, val) &#123;</span><br><span class="line">        $.each(data[key], function (k, v) &#123;</span><br><span class="line">            if(k == &apos;markerInfo&apos;)&#123;</span><br><span class="line">                addMarkerInfo(v);</span><br><span class="line">            &#125;</span><br><span class="line">            if(k == &apos;heatPoints&apos;)&#123;</span><br><span class="line">                addHeat(v);</span><br><span class="line">            &#125;</span><br><span class="line">            if(k == &apos;linePoints&apos;)&#123;</span><br><span class="line">                addLine(v);</span><br><span class="line">                addMarkerInfo(v);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>解决 html 报错：将 data = $.parseJSON(data); 改为 eval(“(“+data+”)”)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var dataObj=eval(&quot;(&quot;+data+&quot;)&quot;);//转换为json对象</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>参考博客<a href="https://www.cnblogs.com/fogwang/p/3213668.html" target="_blank" rel="noopener">jQuery中json中关于带有html代码网页的处理</a></p>
+</li>
 </ul>
 <h1 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h1><p>使用正则匹配很方便，虽然看起来像乱码，但是还是很实用的，需要学习。</p>
 
@@ -217,7 +223,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-03-22T06:47:57.303Z" itemprop="dateUpdated">2019-03-22 14:47:57</time>
+    最后更新时间：<time datetime="2019-03-25T05:53:41.575Z" itemprop="dateUpdated">2019-03-25 13:53:41</time>
 </span><br>
 
 
