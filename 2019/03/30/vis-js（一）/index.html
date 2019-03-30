@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>vis.js（一） | 王世茹的博客 | 不爱撸猫的摄影师不是好程序猿</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#fcddb7">
+    
+    
+    <meta name="keywords" content="vis.js,关系图">
+    <meta name="description" content="介绍用途vis.js 是基于浏览器的动态可视化库。该库旨在易于使用，处理大量动态数据，以及实现对数据的操作和交互。该库由组件DataSet，Timeline，Network，Graph2d和Graph3d组成。我这里做关系图，所以目前主要针对 Network 进行学习。 安装 使用 npm 安装  github 直接 clone 或者 下载包  目录结构我是通过 github 下载包获取代码，不过">
+<meta name="keywords" content="vis.js,关系图">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vis.js（一）">
+<meta property="og:url" content="https://wsrdadian.github.io/2019/03/30/vis-js（一）/index.html">
+<meta property="og:site_name" content="王世茹的博客">
+<meta property="og:description" content="介绍用途vis.js 是基于浏览器的动态可视化库。该库旨在易于使用，处理大量动态数据，以及实现对数据的操作和交互。该库由组件DataSet，Timeline，Network，Graph2d和Graph3d组成。我这里做关系图，所以目前主要针对 Network 进行学习。 安装 使用 npm 安装  github 直接 clone 或者 下载包  目录结构我是通过 github 下载包获取代码，不过">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-30T09:06:07.270Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vis.js（一）">
+<meta name="twitter:description" content="介绍用途vis.js 是基于浏览器的动态可视化库。该库旨在易于使用，处理大量动态数据，以及实现对数据的操作和交互。该库由组件DataSet，Timeline，Network，Graph2d和Graph3d组成。我这里做关系图，所以目前主要针对 Network 进行学习。 安装 使用 npm 安装  github 直接 clone 或者 下载包  目录结构我是通过 github 下载包获取代码，不过">
+    
+        <link rel="alternate" type="application/atom+xml" title="王世茹的博客" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/img/favicon.ico">
+    <link rel="stylesheet" href="/css/style.css?v=1.7.2">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">WSR</h5>
+          <a href="mailto:wangshrl@163.com" title="wangshrl@163.com" class="mail">wangshrl@163.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                存档
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                标签
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                分类
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/wsrdadian" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://weibo.com/Wangshrl" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">vis.js（一）</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">vis.js（一）</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-30T02:49:01.000Z" itemprop="datePublished" class="page-time">
+  2019-03-30
+</time>
+
+
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端学习/">前端学习</a></li></ul>
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#介绍"><span class="post-toc-number">1.</span> <span class="post-toc-text">介绍</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#用途"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">用途</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">安装</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#目录结构"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">目录结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#data目录"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">data目录</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#datasets-html"><span class="post-toc-number">1.3.1.1.</span> <span class="post-toc-text">datasets.html</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#dynamicData-html"><span class="post-toc-number">1.3.1.2.</span> <span class="post-toc-text">dynamicData.html</span></a></li></ol></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-vis-js（一）" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">vis.js（一）</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-30 10:49:01" datetime="2019-03-30T02:49:01.000Z" itemprop="datePublished">2019-03-30</time>
+
+            
+	<ul class="article-category-list"><li class="article-category-list-item"><a class="article-category-list-link" href="/categories/前端学习/">前端学习</a></li></ul>
+
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h1><h2 id="用途"><a href="#用途" class="headerlink" title="用途"></a>用途</h2><p><a href="http://visjs.org" target="_blank" rel="noopener">vis.js</a> 是基于浏览器的动态可视化库。该库旨在易于使用，处理大量动态数据，以及实现对数据的操作和交互。该库由组件DataSet，Timeline，Network，Graph2d和Graph3d组成。我这里做关系图，所以目前主要针对 Network 进行学习。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><ol>
+<li>使用 npm 安装 </li>
+<li>github 直接 clone 或者 下载包</li>
+</ol>
+<h2 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h2><p>我是通过 github 下载包获取代码，不过目录结构应该类似，下面介绍一下 Network 的主要学习的部分。进入 \vis-master\examples\network 目录</p>
+<h3 id="data目录"><a href="#data目录" class="headerlink" title="data目录"></a>data目录</h3><h4 id="datasets-html"><a href="#datasets-html" class="headerlink" title="datasets.html"></a>datasets.html</h4><ol>
+<li><p>渲染一个基本的 network</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">function startNetwork() &#123;</span><br><span class="line">    // this list is kept to remove a random node.. we do not add node 1 here because it&apos;s used for changes</span><br><span class="line">    nodeIds = [2, 3, 4, 5];</span><br><span class="line">    shadowState = false;</span><br><span class="line">    // create an array with nodes 每个节点有一个唯一的 id ，label 为节点的标签</span><br><span class="line">    nodesArray = [</span><br><span class="line">        &#123;id: 1, label: &apos;Node 1&apos;&#125;,</span><br><span class="line">        &#123;id: 2, label: &apos;Node 2&apos;&#125;,</span><br><span class="line">        &#123;id: 3, label: &apos;Node 3&apos;&#125;,</span><br><span class="line">        &#123;id: 4, label: &apos;Node 4&apos;&#125;,</span><br><span class="line">        &#123;id: 5, label: &apos;Node 5&apos;&#125;</span><br><span class="line">    ];</span><br><span class="line">    //使用 DataSet 函数将节点和边转化为 vis 节点和边对象</span><br><span class="line">    nodes = new vis.DataSet(nodesArray);</span><br><span class="line">    // create an array with edges 每条边有入度和出度，调用节点 id</span><br><span class="line">    edgesArray = [</span><br><span class="line">        &#123;from: 1, to: 3&#125;,</span><br><span class="line">        &#123;from: 1, to: 2&#125;,</span><br><span class="line">        &#123;from: 2, to: 4&#125;,</span><br><span class="line">        &#123;from: 2, to: 5&#125;</span><br><span class="line">    ];</span><br><span class="line">    edges = new vis.DataSet(edgesArray);</span><br><span class="line">    // create a network 渲染 network 需要 Dom 中有一个 id 为 mynetwork 的 div 作为容器</span><br><span class="line">    var container = document.getElementById(&apos;mynetwork&apos;);</span><br><span class="line">    //设置渲染数据和参数，用 Network 函数生成即可。可以通过设置 options 来生成自定义 network </span><br><span class="line">    var data = &#123;</span><br><span class="line">        nodes: nodes,</span><br><span class="line">        edges: edges</span><br><span class="line">    &#125;;</span><br><span class="line">    var options = &#123;&#125;;</span><br><span class="line">    network = new vis.Network(container, data, options);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>添加一个随机生成的节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function addNode() &#123;</span><br><span class="line">	//random() 方法可返回介于 0 ~ 1 之间的一个随机数，1e7表示10000000</span><br><span class="line">	//Number.toString()：将数字转换为字符串。用它的参数指定的基数或底数（底数范围为2-36）。如果省略参数，则使用基数10。当参数值为2时，返回二进制数。，并返回结果</span><br><span class="line">    var newId = (Math.random() * 1e7).toString(32); </span><br><span class="line">    nodes.add(&#123;id:newId, label:&quot;I&apos;m new!&quot;&#125;);</span><br><span class="line">    nodeIds.push(newId);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>参考博客： <a href="https://www.jianshu.com/p/0ae00f6b83ac" target="_blank" rel="noopener">一些有用的JS 代码片段</a></p>
+<ol start="3">
+<li><p>改变指定节点的属性并更新</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function changeNode1() &#123;</span><br><span class="line">	//Math.floor()返回小于或等于一个给定数字的最大整数</span><br><span class="line">    var newColor = &apos;#&apos; + Math.floor((Math.random() * 255 * 255 * 255)).toString(16);</span><br><span class="line">    //更新指定id的节点属性，传入 id 和更改的节点属性</span><br><span class="line">    nodes.update([&#123;id:1, color:&#123;background:newColor&#125;&#125;]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移除指定节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function removeRandomNode() &#123;</span><br><span class="line">    var randomNodeId = nodeIds[Math.floor(Math.random() * nodeIds.length)];</span><br><span class="line">    //移除指定id节点</span><br><span class="line">    nodes.remove(&#123;id:randomNodeId&#125;);</span><br><span class="line">    //indexOf() 方法可返回某个指定的字符串值在字符串和数组中首次出现的位置。</span><br><span class="line">    var index = nodeIds.indexOf(randomNodeId);</span><br><span class="line">    //splice() 方法向/从数组中添加/删除项目，然后返回被删除的项目。index规定添加/删除项目的位置，1是要删除的项目数量</span><br><span class="line">    nodeIds.splice(index,1);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> 移除节点分两步，先移除指定id节点，然后在节点id数组中移除该id值</p>
+</li>
+<li><p>修改全局节点属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function changeOptions() &#123;</span><br><span class="line">    shadowState = !shadowState;</span><br><span class="line">    network.setOptions(&#123;nodes:&#123;shadow:shadowState&#125;,edges:&#123;shadow:shadowState&#125;&#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新加载为初始状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function resetAllNodes() &#123;</span><br><span class="line">    nodes.clear();</span><br><span class="line">    edges.clear();</span><br><span class="line">    nodes.add(nodesArray);</span><br><span class="line">    edges.add(edgesArray);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新加载为稳定的初始状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function resetAllNodesStabilize() &#123;</span><br><span class="line">    resetAllNodes();</span><br><span class="line">    network.stabilize();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设为稳定状态</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function setTheData() &#123;</span><br><span class="line">    nodes = new vis.DataSet(nodesArray);</span><br><span class="line">    edges = new vis.DataSet(edgesArray);</span><br><span class="line">    network.setData(&#123;nodes:nodes, edges:edges&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>销毁dom并重新渲染</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">function resetAll() &#123;</span><br><span class="line">    if (network !== null) &#123;</span><br><span class="line">        network.destroy();</span><br><span class="line">        network = null;</span><br><span class="line">    &#125;</span><br><span class="line">    startNetwork();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h4 id="dynamicData-html"><a href="#dynamicData-html" class="headerlink" title="dynamicData.html"></a>dynamicData.html</h4><ol>
+<li><p>添加节点</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function addNode() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        nodes.add(&#123;</span><br><span class="line">            id: document.getElementById(&apos;node-id&apos;).value,</span><br><span class="line">            label: document.getElementById(&apos;node-label&apos;).value</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    catch (err) &#123;</span><br><span class="line">        alert(err);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>更新:保存修改后的节点信息（如果不存在id则添加，已存在id则修改）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function updateNode() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        nodes.update(&#123;</span><br><span class="line">            id: document.getElementById(&apos;node-id&apos;).value,</span><br><span class="line">            label: document.getElementById(&apos;node-label&apos;).value</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    catch (err) &#123;</span><br><span class="line">        alert(err);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<ul>
+<li>添加和更新边和节点类似</li>
+</ul>
+<ol start="3">
+<li><p>移除</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function removeNode() &#123;</span><br><span class="line">    try &#123;</span><br><span class="line">        nodes.remove(&#123;id: document.getElementById(&apos;node-id&apos;).value&#125;);</span><br><span class="line">    &#125;</span><br><span class="line">    catch (err) &#123;</span><br><span class="line">        alert(err);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>渲染</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">function draw() &#123;</span><br><span class="line">    // create an array with nodes</span><br><span class="line">    nodes = new vis.DataSet();</span><br><span class="line">    nodes.on(&apos;*&apos;, function () &#123;</span><br><span class="line">    	//JSON.stringify() 方法将 JavaScript 对象转换为字符串</span><br><span class="line">        document.getElementById(&apos;nodes&apos;).innerHTML = JSON.stringify(nodes.get(), null, 4);</span><br><span class="line">    &#125;);</span><br><span class="line">    nodes.add([</span><br><span class="line">        &#123;id: &apos;1&apos;, label: &apos;Node 1&apos;&#125;,</span><br><span class="line">        &#123;id: &apos;2&apos;, label: &apos;Node 2&apos;&#125;,</span><br><span class="line">        &#123;id: &apos;3&apos;, label: &apos;Node 3&apos;&#125;,</span><br><span class="line">        &#123;id: &apos;4&apos;, label: &apos;Node 4&apos;&#125;,</span><br><span class="line">        &#123;id: &apos;5&apos;, label: &apos;Node 5&apos;&#125;</span><br><span class="line">    ]);</span><br><span class="line"></span><br><span class="line">    // create an array with edges</span><br><span class="line">    edges = new vis.DataSet();</span><br><span class="line">    edges.on(&apos;*&apos;, function () &#123;</span><br><span class="line">        document.getElementById(&apos;edges&apos;).innerHTML = JSON.stringify(edges.get(), null, 4);</span><br><span class="line">    &#125;);</span><br><span class="line">    edges.add([</span><br><span class="line">        &#123;id: &apos;1&apos;, from: &apos;1&apos;, to: &apos;2&apos;&#125;,</span><br><span class="line">        &#123;id: &apos;2&apos;, from: &apos;1&apos;, to: &apos;3&apos;&#125;,</span><br><span class="line">        &#123;id: &apos;3&apos;, from: &apos;2&apos;, to: &apos;4&apos;&#125;,</span><br><span class="line">        &#123;id: &apos;4&apos;, from: &apos;2&apos;, to: &apos;5&apos;&#125;</span><br><span class="line">    ]);</span><br><span class="line"></span><br><span class="line">    // create a network</span><br><span class="line">    var container = document.getElementById(&apos;network&apos;);</span><br><span class="line">    var data = &#123;</span><br><span class="line">        nodes: nodes,</span><br><span class="line">        edges: edges</span><br><span class="line">    &#125;;</span><br><span class="line">    var options = &#123;&#125;;</span><br><span class="line">    network = new vis.Network(container, data, options);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>参考<a href="http://www.runoob.com/json/json-stringify.html" target="_blank" rel="noopener">JSON.stringify()</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-03-30T09:06:07.270Z" itemprop="dateUpdated">2019-03-30 17:06:07</time>
+</span><br>
+
+
+        
+        如果博客内容对您有用请适当投喂哦~
+        
+    </div>
+    
+    <footer>
+        <a href="https://wsrdadian.github.io">
+            <img src="/img/avatar.jpg" alt="WSR">
+            WSR
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vis-js/">vis.js</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/关系图/">关系图</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/03/30/vis-js（一）/&title=《vis.js（一）》 — 王世茹的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/03/30/vis-js（一）/&title=《vis.js（一）》 — 王世茹的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/03/30/vis-js（一）/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vis.js（一）》 — 王世茹的博客&url=https://wsrdadian.github.io/2019/03/30/vis-js（一）/&via=https://wsrdadian.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/03/30/vis-js（一）/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/22/json接口的问题以及解决方法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">json接口的问题以及解决方法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        感谢投喂~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>WSR &copy; 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://wsrdadian.github.io/2019/03/30/vis-js（一）/&title=《vis.js（一）》 — 王世茹的博客&pic=https://wsrdadian.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://wsrdadian.github.io/2019/03/30/vis-js（一）/&title=《vis.js（一）》 — 王世茹的博客&source=" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://wsrdadian.github.io/2019/03/30/vis-js（一）/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《vis.js（一）》 — 王世茹的博客&url=https://wsrdadian.github.io/2019/03/30/vis-js（一）/&via=https://wsrdadian.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://wsrdadian.github.io/2019/03/30/vis-js（一）/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aQW4DMQgF0Nz/0qnUbeTpB5KqZZ5XUZN6/GaBwPB4xOv5vU6fr7993ed1nXZ788LAwPi3jOfluj7u6cHXu/VgP+yGgYFxA0YSZJNgev2/+avJz4aBgYFx/ZtT6Ey+vQ7WGBgYGBNG9bjVII6BgYExKWLnpMn+b6vFMTAw/iFj3hj43Odf7W9gYGD8ScazuHq7JYd7DhYGBsZuRp6uVQNxctBJ6I8yXAwMjBWMfISrd9H/3vL1+HQMDIzVjDyYJsnfJ9oA1XE0DAyMrYxJUKu+rd6LiH6PgYGxlJE3JntDXdUgXq1Jf8hwMTAwVjB6KV2vq1gtjJM2AwYGBka1pMxbBfPGQLQPBgbGIsZ7j9IreuehHAMDYzejNypRHdvKj5sUscc9MTAwVjOSIjYpKXstyfxZhRQTAwNjBWM0bjUYsMj7jwkVAwNjNyO/yq8mZ5OhsbxtiYGBcTfG5x6TNyyr4xoYGBj3YcxHVHsXbb3Bi2MtjoGBsZQxKVmr6WM13mNgYGCcGNULuN4AWeH6LOlpYGBgrGZUQ2RSpuaBuHC4HIyBgbGO0RvwmjQ7qyE+aWRiYGDsZvRK1vmheyMXvVQSAwNjByO/3K/+ZXL0ahqKgYFxB0bv6r/KiHqqvdCPgYGBEWSU1RRw8pRjaoiBgYHRGqroXaiVz4OBgXEDRl7E5kVmdWhj0kzFwMDYzeiVjr3ruXznahDHwMBYyvgCEHz+9eC2kKUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="/js/main.min.js?v=1.7.2"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="/js/search.min.js?v=1.7.2" async></script>
+
+
+
+
+
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '咦!回来啦!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
