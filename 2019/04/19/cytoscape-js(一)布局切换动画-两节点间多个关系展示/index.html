@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="cytoscape.js,关系图">
-    <meta name="description" content="需求仍然是关系图的展示，前面用到的vis.js在显示两个节点间多个关系时的表现有些鸡肋，同时布局切换时没有动画效果（节点逐渐移动边随之移动），这一周特尝试了sigma.js，它在布局切换时的动画镇吸引人，但是同样的问题，不支持两节点多个关系的展示，所以也是从入门到放弃了，下面会分别就 sigma.js 来谈谈问题  两节点间同方向多个关系的展示 布局切换动画效果  问题分析两节点间同方向多个关系的">
+    <meta name="description" content="需求仍然是关系图的展示，前面用到的vis.js在显示两个节点间多个关系时的表现有些鸡肋，同时布局切换时没有动画效果（节点逐渐移动边随之移动），这一周特尝试了sigma.js，它在布局切换时的动画很吸引人，但是同样的问题，不支持两节点多个关系的展示，所以也是从入门到放弃了，下面会分别就 sigma.js 来谈谈问题  两节点间同方向多个关系的展示 布局切换动画效果  问题分析两节点间同方向多个关系的">
 <meta name="keywords" content="cytoscape.js,关系图">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cytoscape.js(一)布局切换动画+两节点间多个关系展示">
 <meta property="og:url" content="https://wsrdadian.github.io/2019/04/19/cytoscape-js(一)布局切换动画-两节点间多个关系展示/index.html">
 <meta property="og:site_name" content="王世茹的博客">
-<meta property="og:description" content="需求仍然是关系图的展示，前面用到的vis.js在显示两个节点间多个关系时的表现有些鸡肋，同时布局切换时没有动画效果（节点逐渐移动边随之移动），这一周特尝试了sigma.js，它在布局切换时的动画镇吸引人，但是同样的问题，不支持两节点多个关系的展示，所以也是从入门到放弃了，下面会分别就 sigma.js 来谈谈问题  两节点间同方向多个关系的展示 布局切换动画效果  问题分析两节点间同方向多个关系的">
+<meta property="og:description" content="需求仍然是关系图的展示，前面用到的vis.js在显示两个节点间多个关系时的表现有些鸡肋，同时布局切换时没有动画效果（节点逐渐移动边随之移动），这一周特尝试了sigma.js，它在布局切换时的动画很吸引人，但是同样的问题，不支持两节点多个关系的展示，所以也是从入门到放弃了，下面会分别就 sigma.js 来谈谈问题  两节点间同方向多个关系的展示 布局切换动画效果  问题分析两节点间同方向多个关系的">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-19T08:32:33.981Z">
+<meta property="og:updated_time" content="2019-04-19T08:39:06.564Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cytoscape.js(一)布局切换动画+两节点间多个关系展示">
-<meta name="twitter:description" content="需求仍然是关系图的展示，前面用到的vis.js在显示两个节点间多个关系时的表现有些鸡肋，同时布局切换时没有动画效果（节点逐渐移动边随之移动），这一周特尝试了sigma.js，它在布局切换时的动画镇吸引人，但是同样的问题，不支持两节点多个关系的展示，所以也是从入门到放弃了，下面会分别就 sigma.js 来谈谈问题  两节点间同方向多个关系的展示 布局切换动画效果  问题分析两节点间同方向多个关系的">
+<meta name="twitter:description" content="需求仍然是关系图的展示，前面用到的vis.js在显示两个节点间多个关系时的表现有些鸡肋，同时布局切换时没有动画效果（节点逐渐移动边随之移动），这一周特尝试了sigma.js，它在布局切换时的动画很吸引人，但是同样的问题，不支持两节点多个关系的展示，所以也是从入门到放弃了，下面会分别就 sigma.js 来谈谈问题  两节点间同方向多个关系的展示 布局切换动画效果  问题分析两节点间同方向多个关系的">
     
         <link rel="alternate" type="application/atom+xml" title="王世茹的博客" href="/atom.xml">
     
@@ -192,7 +192,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>仍然是关系图的展示，前面用到的vis.js在显示两个节点间多个关系时的表现有些鸡肋，同时布局切换时没有动画效果（节点逐渐移动边随之移动），这一周特尝试了<a href="http://sigmajs.org/" target="_blank" rel="noopener">sigma.js</a>，它在布局切换时的动画镇吸引人，但是同样的问题，不支持两节点多个关系的展示，所以也是从入门到放弃了，下面会分别就 sigma.js 来谈谈问题</p>
+            <h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>仍然是关系图的展示，前面用到的vis.js在显示两个节点间多个关系时的表现有些鸡肋，同时布局切换时没有动画效果（节点逐渐移动边随之移动），这一周特尝试了<a href="http://sigmajs.org/" target="_blank" rel="noopener">sigma.js</a>，它在布局切换时的动画很吸引人，但是同样的问题，不支持两节点多个关系的展示，所以也是从入门到放弃了，下面会分别就 sigma.js 来谈谈问题</p>
 <ol>
 <li>两节点间同方向多个关系的展示</li>
 <li>布局切换动画效果</li>
@@ -224,7 +224,7 @@
     <div class="content">
         
 <span class="post-time">
-    最后更新时间：<time datetime="2019-04-19T08:32:33.981Z" itemprop="dateUpdated">2019-04-19 16:32:33</time>
+    最后更新时间：<time datetime="2019-04-19T08:39:06.564Z" itemprop="dateUpdated">2019-04-19 16:39:06</time>
 </span><br>
 
 
