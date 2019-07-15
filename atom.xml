@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://wsrdadian.github.io/"/>
-  <updated>2019-07-15T03:29:27.082Z</updated>
+  <updated>2019-07-15T06:38:24.417Z</updated>
   <id>https://wsrdadian.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://wsrdadian.github.io/2019/07/15/%E7%94%B5%E7%BD%91demo%E6%8A%80%E6%9C%AF%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
     <id>https://wsrdadian.github.io/2019/07/15/电网demo技术（二）/</id>
     <published>2019-07-15T03:11:26.000Z</published>
-    <updated>2019-07-15T03:29:27.082Z</updated>
+    <updated>2019-07-15T06:38:24.417Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="控件"><a href="#控件" class="headerlink" title="控件"></a>控件</h1><ul><li>图表控件使用 <a href="">Echarts.js</a> 制作，注意：在渲染图表之前，请确保DOM已加载（可采用定时器）</li><li>类型主要包括：折线图、饼图、仪表盘、极坐标，具体参数参考官方文档</li></ul><h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><ul><li>布局根据设计图进行position定位</li><li>表格和列表的滚动显示，导航的显示隐藏，主要使用Jquery.js</li><li>部分CSS3动画，导航栏的选中切换</li></ul><h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><ul><li>列表的滚动显示，鼠标滑入停止并能随鼠标滑动，鼠标离开，从当前位置继续滚动。</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="控件"><a href="#控件" class="headerlink" title="控件"></a>控件</h1><ul><li>图表控件使用 <a href="">Echarts.js</a> 制作，注意：在渲染图表之前，请确保DOM已加载（可采用定时器）</li><li>类型主要包括：折线图、饼图、仪表盘、极坐标，具体参数参考官方文档</li></ul><h1 id="效果"><a href="#效果" class="headerlink" title="效果"></a>效果</h1><ul><li>布局根据设计图进行position定位</li><li>表格和列表的滚动显示，导航的显示隐藏，主要使用Jquery.js</li><li>部分CSS3动画，导航栏的选中切换</li></ul><h1 id="优化"><a href="#优化" class="headerlink" title="优化"></a>优化</h1><ul><li>列表的滚动显示，鼠标滑入停止并能随鼠标滑动，鼠标离开，从当前位置继续滚动。</li><li>导航栏放左边，滑入显示，滑出隐藏</li></ul>]]></content>
     
     <summary type="html">
     
